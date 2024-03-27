@@ -1,0 +1,32 @@
+table{
+    height: 500px;
+    width: 500px;
+    background-color: white;
+    border-radius: 5px;
+}
+td{
+    border-radius: 5px;
+}
+
+.red{
+    background-color: rgb(192, 192, 152);
+}
+
+body{
+    background-color: black;
+    color: white;
+}
+
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.btn{
+    padding: 10px;
+    margin-bottom: 30px;
+}
