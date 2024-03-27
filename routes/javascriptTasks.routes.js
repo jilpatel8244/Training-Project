@@ -10,4 +10,8 @@ router.get('/projects/kuKuKube', authenticateUser, (req, res) => {
     res.render('pages/task2.KuKuKube.ejs');
 })
 
+router.get('/projects/ticTacToe', authenticateUser, (req, res) => {
+    res.render('pages/task3.TicTacToe.ejs');
+})
+
 module.exports = router;

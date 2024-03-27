@@ -48,7 +48,7 @@ async function check_timeout_and_then_render_password_page(req, res) {
         let diff = Math.abs(new Date() - new Date(result[0].created_at));
         let minutes = Math.floor((diff/1000)/60);
 
-        if (minutes <= 500) {
+        if (minutes <= 60) {
             // render create pass...confirm pass page
             res.render("pages/password_page", {
                 userInsertedId: req.query.userInsertedId
@@ -129,7 +129,7 @@ async function loginHandler(req, res) {
             let payload = {
                 email: req.body.email
             }
-            let token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "5m" });
+            let token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "50m" });
 
             let options = {
                 httpOnly: true,
@@ -158,7 +158,7 @@ async function forgetPasswordHandler(req, res){
         let diff = Math.abs(new Date() - new Date(result[0].created_at));
         let minutes = Math.floor((diff/1000)/60);
 
-        if (minutes <= 500) {
+        if (minutes <= 60) {
             // render create pass...confirm pass page
             res.render("pages/password_page", {
                 userInsertedId: req.query.userInsertedId

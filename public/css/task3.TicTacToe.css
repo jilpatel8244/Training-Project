@@ -1,0 +1,29 @@
+td{
+    border-radius: 10px;            
+    background-color: #0063B2FF;
+    color: #9CC3D5FF;
+
+}
+body{
+    background-color: white;
+}
+#status{
+    display: flex;
+    justify-content: center;
+}
+.header{
+    display: flex;
+    justify-content: center;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    font-size: 100px;
+    color: #0063B2FF;
+}
+td{
+    text-align: center;
+    font-size: 80px;
+    height: 100px;
+    width: 100px;
+}
