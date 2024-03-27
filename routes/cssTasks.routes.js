@@ -10,4 +10,8 @@ router.get('/projects/awanHoster', authenticateUser, (req, res) => {
     res.render('pages/task6.awanHoster.ejs');
 })
 
+router.get('/projects/hireX', authenticateUser, (req, res) => {
+    res.render('pages/task7.hireX.ejs');
+})
+
 module.exports = router;
