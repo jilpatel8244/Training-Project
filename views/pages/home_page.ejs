@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
     <style>
-        h1{
+        .header{
             text-align: center;
             color: #c8a7f8;
         }
@@ -13,12 +13,53 @@
             font-family: sans-serif;
             background-color: #edeeff ;
         }
+        .main{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .home{
+            position: relative;
+        }
+
+        .footer{
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
     </style>
 </head>
 <body>
     <section>
-        <h1>Wellcome to the project grid</h1>
-        <a href="/app/v1/logout">Logout</a>
+        <div class="container">
+            <div class="home">
+                <div class="header">
+                    <h1>Wellcome to the project grid</h1>
+                </div>
+                <div class="main">
+                    <div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Project No.</th>
+                                    <th>Project Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td><a href="/app/v1/projects/dynamicGrid">Dynamic-Grid</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="footer">
+                    <a href="/app/v1/logout">Logout</a>
+                </div>
+            </div>
+        </div>
     </section>
 </body>
 </html>

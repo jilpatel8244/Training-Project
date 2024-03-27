@@ -1,0 +1,24 @@
+.box{
+    height: 100px;
+    width: 100px;
+}
+
+tr:nth-of-type(even) td:nth-of-type(odd),
+tr:nth-of-type(odd) td:nth-of-type(even)
+{
+    background-color: black;
+}
+
+table{
+    border-style: none;
+}
+
+.extra{
+    display: flex;
+}
+
+button{
+    height: 50px;
+    width: 60px;
+    margin: 10px;
+}

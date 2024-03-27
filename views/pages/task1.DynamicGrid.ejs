@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment-1</title>
+    <link rel="stylesheet" href="/css/task1.DynamicGrid.css">
+</head>
+<body>
+    <div class="container">
+        <div class="extra">
+            <table border="1">
+                <tbody id="member_body">
+                    <tr>
+                        <td class="box"></td>
+                        <td class="box"></td>
+                    </tr>
+                    <tr>
+                        <td class="box"></td>
+                        <td class="box"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button onclick="CollAdd()">col+</button>
+            <button onclick="DeleteCol()">col-</button>
+        </div>
+        <div>
+            <button onclick="RowAdd()">row+</button>
+        </div>
+        <div>
+            <button onclick="DeleteRow()">row-</button>
+        </div>
+    </div>
+
+    <script src="/js/task1.DynamicGrid.script.js"></script>
+</body>
+</html>

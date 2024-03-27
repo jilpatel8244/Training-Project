@@ -48,7 +48,7 @@ async function check_timeout_and_then_render_password_page(req, res) {
         let diff = Math.abs(new Date() - new Date(result[0].created_at));
         let minutes = Math.floor((diff/1000)/60);
 
-        if (minutes <= 1) {
+        if (minutes <= 500) {
             // render create pass...confirm pass page
             res.render("pages/password_page", {
                 userInsertedId: req.query.userInsertedId
@@ -158,7 +158,7 @@ async function forgetPasswordHandler(req, res){
         let diff = Math.abs(new Date() - new Date(result[0].created_at));
         let minutes = Math.floor((diff/1000)/60);
 
-        if (minutes <= 1) {
+        if (minutes <= 500) {
             // render create pass...confirm pass page
             res.render("pages/password_page", {
                 userInsertedId: req.query.userInsertedId
