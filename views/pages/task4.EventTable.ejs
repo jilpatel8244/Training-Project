@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Table</title>
+    <link rel="stylesheet" href="/css/task4.EventTable.css">
+</head>
+
+<body onafterprint="onafterprintHandler()" onbeforeprint="onbeforeprintHandler()"
+    onbeforeunload="onbeforeunloadHandler()" onload="onloadHandler()" onresize="onresizeHandler()">
+    <div class="heading"><h1>Event Table</h1></div>
+    <div class="semiheading"><p>jil patel</p></div> 
+    <div class="container">
+        
+        <div>
+            <table border="1">
+                <tr>
+                    <td class="box" id="1">Press Ctrl+P</td>
+                    <td class="box">
+                        <div id="mydiv2" onclick="eventHandler()">Click me to start the animation</div>
+                    </td>
+                    <td class="box" id="3"><a href="https://www.google.com">google</a></td>
+                    <td class="box"><input type="text" name="name" id="fname" onblur="onblurHandler()"
+                            placeholder="onblur">
+                    </td>
+                    <td class="box"><input type="text" name="name" id="lname" onfocus="onfocusHandler()"
+                            placeholder="onfocus"></td>
+                </tr>
+                <tr>
+                    <td class="box"><input type="text" name="name" onfocusin="onfocusinHandler(this)"
+                            onfocusout="onfocusoutHandler(this)" placeholder="onfocusin"></td>
+                    <td class="box">
+                        <select id="mySelect" onchange="myFunction()">
+                            <option value="Audi">Audi</option>
+                            <option value="BMW">BMW</option>
+                            <option value="Mercedes">Mercedes</option>
+                            <option value="Volvo">Volvo</option>
+                        </select>
+                        <p>onchange </p>
+                    </td>
+                    <td class="box">
+                        <p ondblclick="ondblclickHandler(this)">dubble click</p>
+                    </td>
+                    <td class="box">
+                        <p id="myP" onmousedown="mouseDown()" onmouseup="mouseUp()">mouseDown and mouseUp
+                    </td>
+                    <td class="box">
+                        <p onmouseover="onmouseoverHandler()" id="ok" onmouseleave="onmouseleaveHandler()">onmouseover
+                            and
+                            onmouseleave</p>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="box" onmousemove="myFunction(event)" onmouseout="clearCoor()">
+                        <p id="demo">onmousemove and onmouseout</p>
+                    </td>
+                    <td class="box">
+                        <input type="text" oncopy="oncopyHandler()" value="Try to copy me">
+                        <p id="copy"></p>
+                    </td>
+                    <td class="box">
+                        <input type="text" oncut="oncutHandler()" value="Try to cut me">
+                        <p id="cut"></p>
+                    </td>
+                    <td class="box">
+                        <img src="image.gif" onerror="onerrorHandler()">
+                    </td>
+                    <td class="box">
+                        <button onclick="openFullscreen();">Go Fullscreen Mode</button>
+                        <button onclick="closeFullscreen();">Close Fullscreen</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="box">
+                        <input type="text" id="myInput" oninput="oninputHandler()" placeholder="oninput">
+                        <p id="okok"></p>
+                    </td>
+                    <td class="box">
+                        <input type="text" id="key" onkeydown="onkeydownHandler()" placeholder="onkeydown">
+                        <p id="keyText"></p>
+                    </td>
+                    <td class="box">
+                        <input type="text" id="keyDownUp" onkeydown="keydownFunction()" onkeyup="keyupFunction()"
+                            placeholder="keydoen and keyup">
+                    </td>
+                    <td class="box">
+                        <div id="wheelId" onmousewheel="wheelHandler()">
+                            My name is Jil
+                        </div>
+                    </td>
+                    <td class="box">
+                        <details ontoggle="myFunction()">
+                            <summary>Copyright 1999-2014.</summary>
+                            <p> - by Refsnes Data. All Rights Reserved.</p>
+                            <p>All content and graphics on this web site are the property of the company Refsnes Data.
+                            </p>
+                        </details>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="box">
+                        <form onreset="onresetHandler()">
+                            <input type="text" placeholder="onreset">
+                            <button type="reset">reset</button>
+                        </form>
+                    </td>
+                    <td class="box">
+                        <form onsubmit="onsubmitHandler()">
+                            <input type="text" placeholder="onsubmit">
+                            <button type="submit">submit</button>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script src="/js/task4.EventTable.script.js"></script>
+</body>
+
+</html>

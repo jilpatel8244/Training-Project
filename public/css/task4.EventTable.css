@@ -1,0 +1,38 @@
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.box {
+    height: 150px;
+    width: 150px;
+}
+
+#mydiv2 {
+    width: 50%;
+    height: 50px;
+    background: orange;
+    position: relative;
+    font-size: 18px;
+    padding: 16px;
+}
+
+@keyframes mymove {
+    from {
+        top: 0px;
+    }
+
+    to {
+        top: -100px;
+    }
+}
+
+tr:nth-of-type(even) td:nth-of-type(odd),
+tr:nth-of-type(odd) td:nth-of-type(even) {
+    background-color: rgb(245, 166, 166);
+}
+
+.heading,.semiheading{
+    display: flex;
+    justify-content: center;
+}

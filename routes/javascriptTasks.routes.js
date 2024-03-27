@@ -14,4 +14,8 @@ router.get('/projects/ticTacToe', authenticateUser, (req, res) => {
     res.render('pages/task3.TicTacToe.ejs');
 })
 
+router.get('/projects/eventTable', authenticateUser, (req, res) => {
+    res.render('pages/task4.EventTable.ejs');
+})
+
 module.exports = router;
