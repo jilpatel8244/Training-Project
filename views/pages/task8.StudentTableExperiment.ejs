@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Student List</title>
+    <style>
+        
+        table{
+            width: 100%;
+        }
+        td{
+            padding: 10px;
+        }
+        table, tr, td, th{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+
+<body>
+
+    <% if(typeof current_page != 'undefined'){ %>
+    <%- include('../partials/task8.paginationComponent.ejs', {current_page: current_page, pageEnd: pageEnd}) %>
+    
+    <section>
+        <div class="container">
+            <table>
+                <tr>
+                    <th><a href="/app/v1/getAllStudentsBasedOnOrder?field_val=s_id">id</a></th>
+                    <th><a href="/app/v1/getAllStudentsBasedOnOrder?field_val=f_name">first name</a></th>
+                    <th><a href="/app/v1/getAllStudentsBasedOnOrder?field_val=l_name">last name</a></th>
+                    <th><a href="/app/v1/getAllStudentsBasedOnOrder?field_val=dob">date of birth</a></th>
+                    <th><a href="/app/v1/getAllStudentsBasedOnOrder?field_val=gender">gender</a></th>
+                    <th><a href="/app/v1/getAllStudentsBasedOnOrder?field_val=age">age</a></th>
+                    <th><a href="/app/v1/getAllStudentsBasedOnOrder?field_val=city">city</a></th>
+                    <th><a href="/app/v1/getAllStudentsBasedOnOrder?field_val=email">email</a></th>
+                    <th><a href="/app/v1/getAllStudentsBasedOnOrder?field_val=country">country</a></th>
+                    <th><a href="/app/v1/getAllStudentsBasedOnOrder?field_val=current_cgpa">current CGPA</a></th>
+                    <th><a href="/app/v1/getAllStudentsBasedOnOrder?field_val=createdAt">created_at</a></th>
+                </tr>
+                <% data.forEach(singleStudentData=> { %>
+                    <tr>
+                        <td><%= singleStudentData.s_id %></td>
+                        <td><%= singleStudentData.f_name %></td>
+                        <td><%= singleStudentData.l_name %></td>
+                        <td><%= (singleStudentData.dob).toDateString() %></td>
+                        <td><%= singleStudentData.gender %></td>
+                        <td><%= singleStudentData.age %></td>
+                        <td><%= singleStudentData.city %></td>
+                        <td><%= singleStudentData.email %></td>
+                        <td><%= singleStudentData.country %></td>
+                        <td><%= singleStudentData.current_cgpa %></td>
+                        <td><%= (singleStudentData.createdAt).toLocaleString() %></td>
+                    </tr>
+                <% }) %>
+            </table>
+        </div>
+    </section>
+
+    <% } else { %>  
+        <section>
+            <div class="container">
+                <table>
+                    <tr>
+                        <th>id</th>
+                        <th>first name</th>
+                        <th>last name</th>
+                        <th>date of birth</th>
+                        <th>gender</th>
+                        <th>age</th>
+                        <th>city</th>
+                        <th>email</th>
+                        <th>country</th>
+                        <th>current CGPA</th>
+                        <th>created_at</th>
+                    </tr>
+                    <% data.forEach(singleStudentData=> { %>
+                        <tr>
+                            <td><%= singleStudentData.s_id %></td>
+                            <td><%= singleStudentData.f_name %></td>
+                            <td><%= singleStudentData.l_name %></td>
+                            <td><%= (singleStudentData.dob).toDateString() %></td>
+                            <td><%= singleStudentData.gender %></td>
+                            <td><%= singleStudentData.age %></td>
+                            <td><%= singleStudentData.city %></td>
+                            <td><%= singleStudentData.email %></td>
+                            <td><%= singleStudentData.country %></td>
+                            <td><%= singleStudentData.current_cgpa %></td>
+                            <td><%= (singleStudentData.createdAt).toLocaleString() %></td>
+                        </tr>
+                    <% }) %>
+                </table>
+            </div>
+        </section>
+    <% } %>
+</body>
+
+</html>

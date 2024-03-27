@@ -18,6 +18,10 @@
             justify-content: center;
             align-items: center;
         }
+        th, td{
+            text-align: center;
+            padding: 20px;
+        }
     </style>
 </head>
 <body>
@@ -29,7 +33,7 @@
                 </div>
                 <div class="main">
                     <div>
-                        <table>
+                        <table border="1">
                             <thead>
                                 <tr>
                                     <th>Project No.</th>
@@ -64,6 +68,16 @@
                                 <tr>
                                     <td>7</td>
                                     <td><a href="/app/v1/projects/hireX">WebPageDesign : hireX</a></td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="3">8</td>
+                                    <td>student table experiment</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="/app/v1/justList">justList all students</a></td>
+                                </tr>
+                                <tr> 
+                                    <td><a href="/app/v1/getAllStudents">getAllStudents with pagination and orderBy</a></td>
                                 </tr>
                             </tbody>
                         </table>
