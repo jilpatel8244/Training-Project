@@ -1,0 +1,392 @@
+
+:root {
+    --DARK: #183B56;
+    --WHITE: #FFFFFF;
+    --BLUE: #1565D8;
+    --LIGHTBLUE: #F3F7FD;
+    --GREEN: #36B37E;
+    --GRAY: #5A7184;
+    --FOOTERBG: #0D2436;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+.container{
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 23px;
+}
+
+ul{
+    display: flex;
+    list-style-type: none;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 60%;
+}
+
+li > a{
+    text-decoration: none;
+    color: var(--DARK);
+    font-size: large;
+}
+
+li > a:hover{
+    color: var(--BLUE);
+}
+
+.btn{
+    color: var(--BLUE);
+    border: 2px solid var(--BLUE);
+    border-radius: 5px;
+    padding: 12px 22px;
+    font-weight: bold;
+    background-color: var(--WHITE);
+    font-size: large;
+}
+
+.btn:hover{
+    background-color: var(--BLUE);
+    color: var(--WHITE);
+}
+
+.Landings-select, .Pages-select{
+    border: none;
+    background-color: var(--WHITE);
+    color: var(--DARK);
+    font-size: large;
+}
+
+
+.row-hero{
+    display: flex;
+    align-items: center;
+}
+
+.hero-img-div, .hero-content-div{
+    width: 50%;
+}
+
+.hero-img-div > img{
+    width: 100%;
+}
+
+.hero-content-div > h1{
+    font-size: 360%;
+    color: var(--DARK);
+}
+
+.hero-content-div > p{
+    font-size: 150%;
+}
+
+.section1-btn {
+    background-color: var(--BLUE);
+    color: var(--WHITE);
+    border: none;
+    border-radius: 10px;
+    padding: 2.5% 5%;
+    font-size: 117%;
+    font-weight: bold;
+}
+
+.section2{
+    background-color: var(--LIGHTBLUE);
+    padding : 3%;
+    font-size: large;
+}
+
+.section2-div1{
+    text-align: center;
+    max-width: 40%;
+    margin: 0 auto;
+    line-height: 200%;
+}
+
+.section2-div1 > .ele1{
+    color: var(--GREEN);
+}
+
+.section2-div1 > .ele2{
+    color: var(--DARK);
+    font-size: 180%;
+}
+
+.section2-div1 > .ele3{
+    color: var(--GRAY);
+    font-size: 105%;
+}
+
+.section2-box{
+    height: 200px;
+    width: 200px;
+}
+
+.section2-div2{
+    display: flex;
+    justify-content: space-evenly;
+    color: var(--DARK);
+}
+
+.section2-div2 > div{
+    display: flex;
+    align-items: center;
+}
+
+.section2-div3{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.section2-box{
+    height: auto;
+    background-color: var(--WHITE);
+    border-radius: 20px;
+    width: calc(100%/4);
+    padding: 4% 4%;
+    margin: 4% 4%;
+}
+
+.section2-box > .icon > img{
+    border: 3px solid var(--LIGHTBLUE);
+    border-radius: 20px;
+    padding: 5%;
+}
+
+.learn-more{
+    color: var(--BLUE);
+}
+
+.section3{
+        background-color: var(--WHITE);
+        padding : 3%;
+        font-size: large;
+}
+
+.section3-div2{
+    margin: 0 auto;
+    width: 1440px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding-top: 5%;
+}
+
+.section4{
+    background-color: var(--WHITE);
+    padding-bottom : 3%;
+    font-size: large;
+}
+
+.section4-box1{
+    height: auto;
+    background-color: var(--WHITE);
+    border-radius: 20px;
+    width: calc(100%/4);
+    margin: 4% 4%;
+}
+
+.section4-box1 > div > p{
+    color: var(--GREEN);
+}
+
+.section4-box{
+    height: auto;
+    background-color: var(--WHITE);
+    border-radius: 20px;
+    width: calc(100%/4);
+    margin: 4% 4%;
+}
+
+.section4-box > .icon > img{
+    border: 3px solid var(--LIGHTBLUE);
+    border-radius: 20px;
+    padding: 5%;
+}
+
+
+.hr1{
+    width: 70%;
+    opacity: 0.2;
+}
+
+
+.section5{
+    padding-top: 5%;
+    padding-bottom: 5%;
+    width: 1440px;
+    margin: 0 auto;
+}
+
+.row5{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.section5-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: calc(100%/3);
+}
+
+.Path{
+    display: flex;
+    font-size: large;
+}
+.Path > img{
+    margin-right: 2px;
+}
+.like{
+    height: 100%;
+}
+
+.hr2{
+    height: 70px;
+    opacity: 0.2;
+}
+
+footer{
+    background-color: var(--FOOTERBG);
+    color: var(--WHITE);
+    padding-top: 5%;
+    padding-bottom: 3%;
+}
+
+.row-section6{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: space-between;
+}
+
+.div6{
+    width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    line-height: 200%;
+}
+/* 
+.section6-box1{
+    margin-right: 2%;
+}
+
+.section6-box2{
+    margin-left: 2%;
+} */
+
+input{
+    padding: 15px;
+    width: 26%;
+    border-radius: 10px;
+    border: none;
+}
+
+
+.section6-btn{
+    background-color: var(--BLUE);
+    color: var(--WHITE);
+    border: none;
+    padding: 15px 20px 15px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.section6-box1{
+    color: var(--DARK);
+}
+
+.div6-1{
+    margin-top: 100px;
+}
+
+#section3-div2-bgimg1{
+    background-image: url(/images/task5.ehya.assets/Image.png);
+    height: 600px;
+    width: 555px;
+    border-radius: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 20px 30px;
+    color: white;
+    box-shadow: inset 0 -3em 3em 0 black;
+    margin-top: 20px;
+}
+
+#section3-div2-bgimg2{
+    background-image: url(/images/task5.ehya.assets/Image2.png);
+    height: 600px;
+    width: 555px;
+    border-radius: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 20px 30px;
+    color: white;
+    box-shadow: inset 0 -3em 3em 0 black;
+    margin-top: 20px;
+}
+
+
+
+
+
+
+
+
+/* ------------------------------------------------------------- */
+
+
+@media only screen and (max-width: 800px) {
+    nav, ul {
+      flex-direction: column;
+    }
+    nav, ul{
+        justify-content: start;
+        align-items: start;
+    }
+    ul{
+        padding-left: 0;
+    }
+    .row-hero{
+        flex-direction: column ;
+        padding: 20px;
+    }
+    .section2-div2{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .section2-div3{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .section2-box{
+        width: calc(100%/2);
+    }
+    .section3-div2{
+        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+  }

@@ -1,6 +1,7 @@
 const express = require('express');
 const authRouter = require('./routes/auth.routes');
 const jsTasksRouter = require('./routes/javascriptTasks.routes');
+const cssTasksRouter = require('./routes/cssTasks.routes');
 const cookieParser = require('cookie-parser');
 require('dotenv').config();
 
@@ -17,6 +18,7 @@ app.set('view engine', 'ejs');
 
 app.use('/app/v1', authRouter);
 app.use('/app/v1', jsTasksRouter);
+app.use('/app/v1', cssTasksRouter)
 
 app.listen(process.env.PORT || 3000, (req, res) => {
     console.log("app is running on port 3000");
