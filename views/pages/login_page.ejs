@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <section>
+        <div class="container">
+            <div class="registration">
+                <h1 class="heading">Login</h1>
+                <div class="whole_box">
+                    <form id="login_form">
+                        <div class="row1">
+                            <div class="col">
+                                <label for="email">Email</label>
+                                <input type="text" name="email" id="email">
+
+                                <label for="password">Password</label>
+                                <input type="password" name="password" id="password">
+                            </div>
+                        </div>
+                        <div class="row2">
+                            <input type="button" value="Login" id="submit_btn" onclick="login(event)">
+                        </div>
+                        <div class="row3">
+                            <pre><a href="/app/v1/verifyEmail">Forget Password?</a></pre>
+                            <span id="error_message"></span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="/js/auth_script.js"></script>
+</body>
+</html>
