@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>paginantion-component</title>
+    <style>
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        a, .pageNo{
+            padding: 10px;
+        }
+
+        .row {
+            text-align: center; 
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <div class="container">
+            <div class="row">
+                <% if(Number(current_page) != 1)  {%>
+                    <button><a href="/app/v1/getStudentInfo?page_no=1%>"> &#x3c;&#x3c; </a></button>
+                    <button><a href="/app/v1/getStudentInfo?page_no=<%= Number(current_page)-1 %>">&#x3c; </a></button>
+                <% }else{ %>
+                    <button disabled><a aria-disabled="true" onclick="return false;"> &#x3c;&#x3c; </a></button>
+                    <button disabled><a aria-disabled="true" onclick="return false;" >  &#x3c; </a></button>
+                <% } %>
+
+                <span class="pageNo"><%= current_page %></span>
+
+                <% if(Number(current_page) != Number(pageEnd))  {%>
+                    <button><a href="/app/v1/getStudentInfo?page_no=<%= Number(current_page)+1 %>">&#x3e;</a></button>
+                    <button><a href="/app/v1/getStudentInfo?page_no=<%= Number(pageEnd) %>"> &#x3e;&#x3e; </a></button>
+                <% }else{ %>
+                    <button disabled><a aria-disabled="true" onclick="return false;" href=""> &#x3e; </a></button>
+                    <button disabled><a aria-disabled="true" onclick="return false;" href="">  &#x3e;&#x3e; </a></button>
+                <% } %>
+                
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>
