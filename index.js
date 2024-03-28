@@ -7,6 +7,8 @@ const jsTasksRouter = require('./routes/javascriptTasks.routes');
 const cssTasksRouter = require('./routes/cssTasks.routes');
 const task8StudentTableExp = require('./routes/all express tasks routes/task8.studentTableExperiment.routes');
 const task9AttendanceReport = require('./routes/all express tasks routes/task9.AttendanceReport.routes');
+const task10ExamResult = require('./routes/all express tasks routes/task10.ExamResult.routes');
+
 
 
 const app = express();
@@ -25,6 +27,8 @@ app.use('/app/v1', jsTasksRouter);
 app.use('/app/v1', cssTasksRouter);
 app.use('/app/v1', task8StudentTableExp);
 app.use('/app/v1', task9AttendanceReport);
+app.use('/app/v1', task10ExamResult);
+
 
 app.listen(process.env.PORT || 3000, (req, res) => {
     console.log("app is running on port 3000");

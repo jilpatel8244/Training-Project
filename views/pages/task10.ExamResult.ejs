@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Result</title>
+    <link rel="stylesheet" href="/css/task10.ExamResult.css">
+</head>
+
+<body>
+    <section>
+        <div class="container">
+            <div class="row1">
+                <h1>Exam Result</h1>
+                <h2>Jil Patel</h2>
+                <%- include('../partials/task10.paginationComponent.ejs', {current_page: current_page, pageEnd: pageEnd}) %>
+            </div>
+            <div class="row2">
+                <table>
+                    <tr>
+                        <th rowspan="2">id</th>
+                        <th rowspan="2">first name</th>
+                        <th rowspan="2">last name</th>
+                        <th colspan="2">prelims</th>
+                        <th colspan="2">terminal</th>
+                        <th colspan="2">final</th>
+                        <th rowspan="2">total marks</th>
+                        <th rowspan="2">more details</th>
+                    </tr>
+                    <tr>
+                        <th>practical marks</th>
+                        <th>theory marks</th>
+                        <th>practical marks</th>
+                        <th>theory marks</th>
+                        <th>practical marks</th>
+                        <th>theory marks</th>
+                    </tr>
+
+                    <% data.forEach(singleStudentData=> { %>
+                        <tr>
+                            <td>
+                                <%= singleStudentData.s_id %>
+                            </td>
+                            <td>
+                                <%= singleStudentData.first_name %>
+                            </td>
+                            <td>
+                                <%= singleStudentData.last_name %>
+                            </td>
+                            <td>
+                                <%= singleStudentData.prelim_practical_marks %>
+                            </td>
+                            <td>
+                                <%= singleStudentData.prelim_theory_marks %>
+                            </td>
+                            <td>
+                                <%= singleStudentData.terminal_practical_marks %>
+                            </td>
+                            <td>
+                                <%= singleStudentData.terminal_theory_marks %>
+                            </td>
+                            <td>
+                                <%= singleStudentData.final_practical_marks %>
+                            </td>
+                            <td>
+                                <%= singleStudentData.final_theory_marks %>
+                            </td>
+                            <% var total=singleStudentData.prelim_practical_marks +
+                                singleStudentData.prelim_theory_marks + singleStudentData.terminal_practical_marks +
+                                singleStudentData.terminal_theory_marks + singleStudentData.final_practical_marks +
+                                singleStudentData.final_theory_marks %>
+                                <td>
+                                    <%= total %>
+                                </td>
+                                <td>
+                                    <a target="_blank" href="/app/v1/getMoreInfoOfResult?s_id=<%=singleStudentData.s_id%>"><img src="/images/task10.ExamResult.assets/list.png" alt="more details" width="50px"
+                                            height="50px"></a>
+                                </td>
+                        </tr>
+                        <% }) %>
+                </table>
+            </div>
+
+        </div>
+    </section>
+</body>
+
+</html>

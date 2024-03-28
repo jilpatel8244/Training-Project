@@ -1,0 +1,43 @@
+.container{
+    margin: 0 auto;
+    width: 70%;
+}
+body {
+    background-color: #FDF7E4;
+}
+
+th{
+    background-color: #BBAB8C;
+}
+
+tr{
+    background-color: #FAEED1   ;
+}
+
+tr:hover {background-color: #DED0B6;}
+
+.row1, td{
+    text-align: center;
+    padding: 15px 0;
+}
+
+table {
+    margin: 0 auto;
+}
+
+td,th {
+    padding: 15px;
+}
+
+table,
+tr,
+td{
+    border-bottom: 1px solid #BBAB8C;
+    border-collapse: collapse;
+}
+
+th{
+    border: 1px solid #FDF7E4;
+    border-collapse: collapse;
+}
+
