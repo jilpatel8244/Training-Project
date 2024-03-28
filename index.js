@@ -10,6 +10,8 @@ const task9AttendanceReport = require('./routes/all express tasks routes/task9.A
 const task10ExamResult = require('./routes/all express tasks routes/task10.ExamResult.routes');
 const task12MultipleInputSearch = require('./routes/all express tasks routes/task12.multipleSearch.routes');
 const task13DelimeterSearch = require('./routes/all express tasks routes/task13.delimeterSearch.routes');
+const task14JsonPlaceholderAPI = require('./routes/all express tasks routes/task14.jsonPlaceholderApi.routes');
+
 
 
 
@@ -32,6 +34,8 @@ app.use('/app/v1', task9AttendanceReport);
 app.use('/app/v1', task10ExamResult);
 app.use('/app/v1', task12MultipleInputSearch);
 app.use('/app/v1', task13DelimeterSearch);
+app.use('/app/v1', task14JsonPlaceholderAPI);
+
 
 
 
