@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly Report of Attendance</title>
+    <link rel="stylesheet" href="/css/task9.AttendanceReport.css">
+</head>
+
+<body>
+    <section>
+        <div class="container">
+            <div class="row1 align-center">
+                <h1 style="color: green;">Jil Patel</h1>
+                <h1>Monthly Attendance Report</h1>
+                <%- include('../partials/task9.paginationAndFilterComponent.ejs', {current_page: current_page, pageEnd: pageEnd, day: day, month: month, year: year}) %>
+                <div class="dropdown">
+                    <button class="dropbtn"><%= month %><sub>month</sub> / <%= year %><sub>year</sub></button>
+                    <div class="dropdown-content">
+                        <a href="/app/v1/getReport?day=31&month=12&year=2023">Dec 2023</a>
+                        <a href="/app/v1/getReport?day=31&month=01&year=2024">Jan 2024</a>
+                        <a href="/app/v1/getReport?day=29&month=02&year=2024">Feb 2024</a>
+                    </div>    
+                </div>
+            </div>
+            <div class="row2">
+                <table>
+                    <tr>
+                        <th>id</th>
+                        <th>first name</th>
+                        <th>last name</th>
+                        <th>no of days present</th>
+                        <th>percentage</th>
+                    </tr>
+                    <% data.forEach(singleStudentData=> { %>
+                        <tr>
+                            <td>
+                                <%= singleStudentData.s_id %>
+                            </td>
+                            <td>
+                                <%= singleStudentData.first_name %>
+                            </td>
+                            <td>
+                                <%= singleStudentData.last_name %>
+                            </td>
+                            <td>
+                                <%= singleStudentData.count %>
+                            </td>
+                            <td>
+                                <%= (singleStudentData.percentage).toFixed(2) %> %
+                            </td>
+                        </tr>
+                        <% }) %>
+                </table>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>

@@ -27,7 +27,6 @@ exports.getAllStudentsHandler = (req, res) => {
         CURRENT_PAGE = 1;
     }
 
-    console.log(field_value);
     let offset_value = (CURRENT_PAGE * NO_OF_RECORDS_PER_PAGE) - NO_OF_RECORDS_PER_PAGE;
     connection.query(`select * from student_master order by ${field_value} limit ? offset ?`, [NO_OF_RECORDS_PER_PAGE, offset_value], function (err, result) {
         if (err) throw err;
@@ -44,8 +43,7 @@ exports.getAllStudentsBasedOnOrderHandler = (req, res) => {
     CURRENT_PAGE = 1;
 
     field_value = req.query.field_val || 's_id';
-    console.log(field_value);
-
+    
     res.redirect("/app/v1/getAllStudents");
 }
 
