@@ -1,0 +1,82 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    width: 70%;
+    margin: 0 auto;
+}
+
+.basic_details{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 700px;
+}
+
+.preferences{
+    height: 700px;
+}
+
+.preferences > div{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.education_details, .work_experience, .reference_contact{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 700px;
+}
+
+.work_experience, .reference_contact{
+    align-items: center;
+}
+
+.dropdown{
+    display: flex;
+}
+
+
+.col{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    padding: 0 20px;
+    height: 60%;
+    justify-content: space-between;
+}
+
+
+.navigation_btns{
+    text-align: center;
+}
+
+h1{
+    text-align: center;
+}
+
+.known_thing{
+    display: flex;
+    height: 700px;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.known_thing fieldset{
+    padding: 20px ;
+}
+
+fieldset td{
+    padding: 20px;
+}
+
+.red{
+    color: red;
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Page</title>
+    <style>
+        table{
+            text-align: center;
+            margin: 0 auto;
+        }
+        td{
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <th>id</th>
+            <th>first name</th>
+            <th>last name</th>
+            <th>update</th>
+        </tr>
+    </table>
+</body>
+
+<script>
+    function fetchAllCandidate() {
+        const xhr = new XMLHttpRequest();
+
+        xhr.open("GET", "/app/v1/getAllCandidateInfo", true);
+
+        xhr.onload = function (){
+            if (this.status == 200) {
+                console.log(JSON.parse(this.responseText));
+
+                JSON.parse(this.responseText).forEach(element => {
+                    let tr = document.createElement("tr");
+
+                    let multiple_tds = `
+                        <td>${element.id}</td>
+                        <td>${element.first_name}</td>
+                        <td>${element.last_name}</td>
+                        <td><a href="/app/v1/jobAppForm/?id=${element.id}">update</a></td>
+                    `; 
+
+                    tr.innerHTML = multiple_tds;
+                    document.getElementsByTagName("table")[0].appendChild(tr);
+                });
+            }
+        }   
+
+        xhr.send();
+    }
+
+    fetchAllCandidate();
+</script>
+</html>

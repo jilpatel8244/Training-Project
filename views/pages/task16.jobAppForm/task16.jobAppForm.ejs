@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Form</title>
+    <link rel="stylesheet" href="/css/task16.jobAppForm.css">
+</head>
+<body>
+        <form id="form">
+        <section>
+            <div class="container">
+                <h1>Basic Details</h1>
+                <div class="basic_details">
+                    <div class="col">
+                        <label for="first_name">First Name</label>
+                        <input type="text" name="first_name" id="first_name">
+                        <span id="first_name_error" class="red"></span>
+
+                        <label for="last_name">Last Name</label>
+                        <input type="text" name="last_name" id="last_name">
+                        <span id="last_name_error" class="red"></span>
+
+                        <label for="designation">Designation</label>
+                        <input type="text" name="designation" id="designation">
+                        <span id="designation_error" class="red"></span>
+
+                        <label for="email">Email</label>
+                        <input type="text" name="email" id="email">
+                        <span id="email_error" class="red"></span>
+
+                        <label for="phone_number">Phone No.</label>
+                        <input type="text" name="phone_number" id="phone_number">
+                        <span id="phone_number_error" class="red"></span>
+
+                        <label for="dob">DOB</label>
+                        <input type="date" name="dob" id="dob">
+                        <span id="dob_error" class="red"></span>
+
+                        <span>Gender : </span>
+                        <div>
+                            <input type="radio" name="gender" id="female" value="female">
+                            <label for="female">female</label>
+                        
+                            <input type="radio" name="gender" id="male" value="male">
+                            <label for="male">male</label>
+                        </div>                        
+                        <span id="gender_error" class="red"></span>
+
+                        <span>Relationship Status : </span>
+                        <div>
+                            <select name="relationship_status" id="relationship_status">
+                                <option value="married">married</option>
+                                <option value="single">single</option>
+                            </select>
+                        </div>                        
+                        <span id="relationship_status_error" class="red"></span>
+                    </div>
+
+                    <div class="col">
+                        <label for="address">Address</label>
+                        <textarea name="address" id="address" cols="30"
+                            rows="10"></textarea>
+                        <span id="address_error" class="red"></span>
+
+
+                        <select name="state" id="state" onchange="showState(this.value)">
+                            <option value="">-- select state --</option>
+                        </select>
+                        <span id="state_error" class="red"></span>
+
+
+                        <select name="city" id="city">
+                            <option value="">-- select city --</option>
+                        </select>
+                        <span id="city_error" class="red"></span>
+
+
+                        <label for="zipcode">zipcode</label>
+                        <input type="text" name="zipcode" id="zipcode">
+                        <span id="zipcode_error" class="red"></span>                        
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+
+        <section>
+            <h1>Education Details</h1>
+            <div class="container">
+                <div class="education_details">
+                    <div class="row">
+                        <div>SSC</div>
+                        <div class="scc_line">
+                            <input type="hidden" name="education_type[]" value="ssc">
+
+                            <label for="board_name_ssc">Board Name</label>
+                            <input type="text" name="board_name_or_univercity_name[]" id="board_name_ssc" onfocusout="error_span_text_removal(id)">
+                            <span id="board_name_ssc_error" class="red"></span>
+
+                            <label for="board_passing_year_ssc">Passing Year</label>
+                            <input type="text" name="passing_year[]" id="board_passing_year_ssc" onfocusout="error_span_text_removal(id)">
+                            <span id="board_passing_year_ssc_error" class="red"></span>
+
+                            <label for="board_percentage_ssc">Percentage</label>
+                            <input type="text" name="passing_percentage[]" id="board_percentage_ssc" onfocusout="error_span_text_removal(id)">
+                            <span id="board_percentage_ssc_error" class="red"></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div>HSC</div>
+                        <div class="hsc_line">
+                            <input type="hidden" name="education_type[]" value="hsc">
+
+                            <label for="board_name_hsc">Board Name</label>
+                            <input type="text" name="board_name_or_univercity_name[]" id="board_name_hsc" onfocusout="error_span_text_removal(id)">
+                            <span id="board_name_hsc_error" class="red"></span>
+
+                            <label for="board_passing_year_hsc">Passing Year</label>
+                            <input type="text" name="passing_year[]" id="board_passing_year_hsc" onfocusout="error_span_text_removal(id)">
+                            <span id="board_passing_year_hsc_error" class="red"></span>
+
+                            <label for="board_percentage_hsc">Percentage</label>
+                            <input type="text" name="passing_percentage[]" id="board_percentage_hsc" onfocusout="error_span_text_removal(id)">
+                            <span id="board_percentage_hsc_error" class="red"></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div>Bechlor</div>
+                        <div class="bachelor_line">
+                            <label for="education_type_bechelor">Course Name</label>
+                            <input type="text" name="education_type[]" id="education_type_bechelor" onfocusout="error_span_text_removal(id)">
+                            <span id="education_type_bechelor_error" class="red"></span>
+
+                            <label for="board_name_bechelor">Univercity Name</label>
+                            <input type="text" name="board_name_or_univercity_name[]" id="board_name_bechelor" onfocusout="error_span_text_removal(id)">
+                            <span id="board_name_bechelor_error" class="red"></span>
+                                                                
+
+                            <label for="board_passing_year_bechelor">Passing Year</label>
+                            <input type="text" name="passing_year[]" id="board_passing_year_bechelor" onfocusout="error_span_text_removal(id)">
+                            <span id="board_passing_year_bechelor_error" class="red"></span>
+                                                                
+
+                            <label for="board_percentage_bechelor">Percentage</label>
+                            <input type="text" name="passing_percentage[]" id="board_percentage_bechelor" onfocusout="error_span_text_removal(id)">
+                            <span id="board_percentage_bechelor_error" class="red"></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div>Master</div>             
+                        <div class="master_line">
+                            <label for="education_type_master">Course Name</label>
+                            <input type="text" name="education_type[]" id="education_type_master" onfocusout="error_span_text_removal(id)">
+                            <span id="education_type_master_error" class="red"></span>
+
+                            <label for="board_name_master">Univercity Name</label>
+                            <input type="text" name="board_name_or_univercity_name[]" id="board_name_master" onfocusout="error_span_text_removal(id)">
+                            <span id="board_name_master_error" class="red"></span>
+
+                            <label for="board_passing_year_master">Passing Year</label>
+                            <input type="text" name="passing_year[]" id="board_passing_year_master" onfocusout="error_span_text_removal(id)">
+                            <span id="board_passing_year_master_error" class="red"></span>
+
+                            <label for="board_percentage_master">Percentage</label>
+                            <input type="text" name="passing_percentage[]" id="board_percentage_master" onfocusout="error_span_text_removal(id)">
+                            <span id="board_percentage_master_error" class="red"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h1>work_experience</h1>
+            <div class="container">
+                <div style="position: relative;">
+                    <button type="button" onclick="add_work_experience()" style="position: absolute; top: 0; right: 0;">Add</button>
+                    <div class="work_experience">
+                        <div>
+                            <label for="company1_name">Company Name :</label>
+                            <input type="text" name="company_name[]" id="company1_name" onfocusout="error_span_text_removal(id)">
+                            <span id="company1_name_error" class="red"></span>
+
+                            <label for="company1_designation">Designation :</label>
+                            <input type="text" name="company_designation[]" id="company1_designation" onfocusout="error_span_text_removal(id)">
+                            <span id="company1_designation_error" class="red"></span>
+
+                            <label for="company1_from">From :</label>
+                            <input type="date" name="company_from[]" id="company1_from" onfocusout="error_span_text_removal(id)">
+                            <span id="company1_from_error" class="red"></span>
+
+                            <label for="company1_to">To :</label>
+                            <input type="date" name="company_to[]" id="company1_to" onfocusout="error_span_text_removal(id)"><br>
+                            <span id="company1_to_error" class="red"></span>
+
+                            <button type="button" onclick="remove_line(event)">delete</button>
+                            <input type="hidden" name="isDeletedWorkExp[]" value="false"> 
+                            <input type="hidden" name="idWorkExp[]" value="null" id="company1_id">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <h1>Language and Technology Known</h1>
+                <div class="known_thing">
+                    <fieldset>
+                        <legend>Language Know</legend>
+                        <table>
+                            <tr>
+                                <td><input type="checkbox" name="language" id="language_hindi" value="hindi" onchange="languageOpen(id)">Hindi
+                                    <br>
+                                    <span id="language_hindi_error" class="red"></span>
+                                </td>
+                                <td><input type="checkbox" name="expertise_hindi" value="read" id="expertise_read_hindi" disabled>read</td>
+                                <td><input type="checkbox" name="expertise_hindi" value="write" id="expertise_write_hindi" disabled>Write</td>
+                                <td><input type="checkbox" name="expertise_hindi" value="speak" id="expertise_speak_hindi" disabled>Speak</td>
+                            </tr>
+            
+                            <tr>
+                                <td><input type="checkbox" name="language" id="language_english" value="english" onchange="languageOpen(id)">English
+                                    <br>
+                                    <span id="language_english_error" class="red"></span>
+                                </td>
+                                <td><input type="checkbox" name="expertise_english" value="read" id="expertise_read_english" disabled>read</td>
+                                <td><input type="checkbox" name="expertise_english" value="write" id="expertise_write_english" disabled>Write</td>
+                                <td><input type="checkbox" name="expertise_english" value="speak" id="expertise_speak_english" disabled>Speak</td>
+                            </tr>
+            
+                            <tr>
+                                <td><input type="checkbox" name="language" id="language_gujarati" value="gujarati" onchange="languageOpen(id)">Gujarati
+                                    <br>
+                                    <span id="language_gujarati_error" class="red"></span>
+                                </td>
+                                <td><input type="checkbox" name="expertise_gujarati" value="read" id="expertise_read_gujarati" disabled>read</td>
+                                <td><input type="checkbox" name="expertise_gujarati" value="write" id="expertise_write_gujarati" disabled>Write</td>
+                                <td><input type="checkbox" name="expertise_gujarati" value="speak" id="expertise_speak_gujarati" disabled>Speak</td>
+                            </tr>
+                        </table>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Technologies you Know</legend>
+                        <table>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="technologies" id="technologies_php" value="php" onchange="technologiesopen(id)">
+                                    PHP<br>
+                                    <span id="technologies_php_error" class="red"></span>
+                                </td>
+
+                                <td><input type="radio" name="technologies_expertise_php" id="technologies_expertise_php_b" value="Beginer" disabled><label for="technologies_expertise_php_b">Beginer</label></td>
+                                <td><input type="radio" name="technologies_expertise_php" id="technologies_expertise_php_m" value="Mideator" disabled><label for="technologies_expertise_php_m">Mideator</label></td>
+                                <td><input type="radio" name="technologies_expertise_php" id="technologies_expertise_php_e" value="Expert" disabled><label for="technologies_expertise_php_e">Expert</label><td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="technologies" id="technologies_mysql" value="mysql" onchange="technologiesopen(id)">
+                                    Mysql<br>
+                                    <span id="technologies_mysql_error" class="red"></span>
+                                </td>
+                                <td><input type="radio" name="technologies_expertise_mysql" id="technologies_expertise_mysql_b" value="Beginer" disabled><label for="technologies_expertise_mysql_b">Beginer</label></td>
+                                <td><input type="radio" name="technologies_expertise_mysql" id="technologies_expertise_mysql_m" value="Mideator" disabled><label for="technologies_expertise_mysql_m">Mideator</label></td>
+                                <td><input type="radio" name="technologies_expertise_mysql" id="technologies_expertise_mysql_e" value="Expert" disabled><label for="technologies_expertise_mysql_e">Expert</label><td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="technologies" id="technologies_laravel" value="laravel" onchange="technologiesopen(id)">
+                                    laravel<br>
+                                    <span id="technologies_laravel_error" class="red"></span>
+                                </td>
+                                <td><input type="radio" name="technologies_expertise_laravel" id="technologies_expertise_laravel_b" value="Beginer" disabled><label for="technologies_expertise_laravel_b">Beginer</label></td>
+                                <td><input type="radio" name="technologies_expertise_laravel" id="technologies_expertise_laravel_m" value="Mideator" disabled><label for="technologies_expertise_laravel_m">Mideator</label></td>
+                                <td><input type="radio" name="technologies_expertise_laravel" id="technologies_expertise_laravel_e" value="Expert" disabled><label for="technologies_expertise_laravel_e">Expert</label><td>
+                            </tr>
+                        </table>
+            
+                    </fieldset>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h1>reference_contact</h1>
+            <div class="container">
+                <div style="position: relative;">
+                    <button type="button" onclick="add_reference()" style="position: absolute; top: 0; right: 0;">Add</button>
+                    <div class="reference_contact">
+                        <div>
+                            <label for="referance_name_1">Person Name :</label>
+                            <input type="text" name="referance_name[]" id="referance_name_1" onfocusout="error_span_text_removal(id)">
+                            <span id="referance_name_1_error" class="red"></span>
+
+                            <label for="referance_phone_1">Phone No. :</label>
+                            <input type="text" name="referance_phone[]" id="referance_phone_1" onfocusout="error_span_text_removal(id)">
+                            <span id="referance_phone_1_error" class="red"></span>
+
+                            <label for="referance_relation_1">Relation :</label>
+                            <input type="text" name="referance_relation[]" id="referance_relation_1" onfocusout="error_span_text_removal(id)">
+                            <span id="referance_relation_1_error" class="red"></span>
+
+                            <button type="button" onclick="remove_line(event)">delete</button>
+                            <input type="hidden" name="isDeletedReference[]" value="false">
+                            <input type="hidden" name="idReference[]" value="null" id="referance_id_1">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h1>preferences</h1>
+            <div class="container">
+                <div class="preferences" style="position: relative;">
+                    <div>
+                        <div class="dropdown">
+                            <div>Prefered Location : </div>
+                            <select name="preferd_location" id="preferd_location">
+                                <option value="Ahemdabad">Ahemdabad</option>
+                                <option value="Bhavnagar">Bhavnagar</option>
+                                <option value="Delhi">Delhi</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="notice_period">Notice Period :</label>
+                            <input type="text" name="notice_period" id="notice_period">
+                            <span id="notice_period_error" class="red"></span>
+                        </div>
+
+                        <div class="dropdown"> 
+                            <div>Department : </div>
+                            <select name="department" id="department">
+                                <option value="Development">Development</option>
+                                <option value="Design">Design</option>
+                                <option value="Marketing">Marketing</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="expectedCTC">Expected CTC :</label>
+                            <input type="text" name="expectedCTC" id="expectedCTC">
+                            <span id="expectedCTC_error" class="red"></span>
+                        </div>
+
+                        <div>
+                            <label for="currentCTC">Current CTC :</label>
+                            <input type="text" name="currentCTC" id="currentCTC">
+                            <span id="currentCTC_error" class="red"></span>
+                        </div>
+                    </div>
+
+                    <% if(id == null){ %>
+                        <input type="submit" value="Submit" style="position: absolute; bottom: 0; right: 0;">
+                    <% } else { %>
+                        <input type="hidden" name="id_of_the_person_we_need_update" value="<%= id %>">
+                        <input type="submit" value="Update" style="position: absolute; bottom: 0; right: 0;">
+                    <% } %>
+                </div>
+            </div>
+        </section>
+
+    </form>
+    <div class="navigation_btns">
+        <button type="button" onclick="prevPage()">prev</button>
+        <button type="button" onclick="nextPage()">next</button>
+    </div>
+
+    <script src="/js/task16.jobAppForm.scripts/validation_script.js"></script>
+    <script src="/js/task16.jobAppForm.scripts/language_technology_open_script.js"></script>
+    <script src="/js/task16.jobAppForm.scripts/state_city_handler_script.js"></script>
+    <script src="/js/task16.jobAppForm.scripts/add_romove_line_script.js"></script>
+    <% if(id == null){ %>
+        <script src="/js/task16.jobAppForm.scripts/insertData_script.js"></script>
+    <% } else {%>
+        <script src="/js/task16.jobAppForm.scripts/getAllDataBasedOnId.js"></script>
+        <script src="/js/task16.jobAppForm.scripts/updateData_script.js"></script>
+    <% } %>
+    <script src="/js/task16.jobAppForm.scripts/navigation_handler_script.js"></script>
+</body>
+</html>
