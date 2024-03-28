@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>student-info</title>
+</head>
+
+<body>
+    <section>
+        <div class="container" >
+
+            <div class="row">
+                <h1>Jil Patel</h1>
+                <h1>Student Info</h1>
+                <pre>_first_name ^last_name $email :city {id }gender</pre>
+            </div>
+
+            <div class="row">
+                <form action="/app/v1/getStudentInfoUsingDelimeter" method="post" id="frm">
+                    <input type="text" name="sql" id="sql" style="height: 100px; width: 700px;" value="<%= sql %>" autofocus>
+                    <input type="submit" value="Go">
+                </form>
+            </div>
+
+           <% if(data.length != 0 && message == true){ %>
+            <div class="row">
+                
+                    <table>
+                        <tr>
+                            <th>id</th>
+                            <th>first name</th>
+                            <th>last name</th>
+                            <th>email</th>
+                            <th>gender</th>
+                            <th>dob</th>
+                            <th>city</th>
+                            <th>country</th>
+                            <th>current_cgpa</th>
+                            <th>created_at</th>
+                        </tr>
+                        <% data.forEach(singleStudentData=> { %>
+                            <tr>
+                                <td>
+                                    <%= singleStudentData.s_id %>
+                                </td>
+                                <td>
+                                    <%= singleStudentData.first_name %>
+                                </td>
+                                <td>
+                                    <%= singleStudentData.last_name %>
+                                </td>
+                                <td>
+                                    <%= singleStudentData.email %>
+                                </td>
+                                <td>
+                                    <%= singleStudentData.gender %>
+                                </td>
+                                <td>
+                                    <%= (singleStudentData.dob).toDateString() %>
+                                </td>
+                                <td>
+                                    <%= singleStudentData.city %>
+                                </td>
+                                <td>
+                                    <%= singleStudentData.country %>
+                                </td>
+                                <td>
+                                    <%= singleStudentData.current_cgpa %>
+                                </td>
+                                <td>
+                                    <%= (singleStudentData.created_at).toLocaleString() %>
+                                </td>
+                            </tr>
+                            <% }) %>
+                    </table>
+
+                
+            </div>
+            <% }else if(message == false){ %>
+                <p>Wrong input</p>
+            <% }else{ %>
+                <p>Record not found</p>
+            <% } %>
+        </div>
+    </section>
+
+</body>
+
+</html>
+
+
+
+<!-- _rijvan^juneja$juneja@gmail.com:surat}male{200 -->
