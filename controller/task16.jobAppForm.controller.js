@@ -120,7 +120,7 @@ function getData(req, res) {
 
 exports.insertData = async (req, res) => {
     console.log("inside insert handler");
-    // console.log(req.body);
+    console.log(req.body);
     // res.send(req.body);
     
     let new_candidate_inserted_id = await insertBasicDetails(req, res);

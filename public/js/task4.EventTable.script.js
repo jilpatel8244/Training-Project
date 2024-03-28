@@ -59,7 +59,7 @@ function onfocusoutHandler(x) {
 
 
 //select handler
-function myFunction() {
+function selectHandler() {
     var x = document.getElementById("mySelect").value;
     alert("You selected: " + x);
 }
@@ -151,9 +151,9 @@ function wheelHandler() {
     document.getElementById("wheelId").style.color = "red";
 }
 
-// function myFunction() {
-//     alert("The ontoggle event occured");
-// }
+function myFunctionForToggle() {
+    alert("The ontoggle event occured");
+}
 
 function onresizeHandler() {
     let w = window.outerWidth;

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+
+        .container {
+            padding: 50px 0;
+            margin: 0 auto;
+            width: 80%;
+        }
+
+        td,th{
+            text-align: center;
+            padding: 15px 10px;
+        }
+
+        table,
+        tr,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+
+        th{
+            text-transform: capitalize;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <section>
+            <%- include('./task11.queryForm.ejs') %>
+        </section>
+        <section>
+            <%- include('../../partials/task11.paginationComponent.ejs', {current_page: current_page, pageEnd: pageEnd}) %>
+        </section>
+        <section>
+            <div class="container">
+                <table style="margin: 0 auto;">
+                    <tr>
+                         
+                        <% fields.forEach(field=> { %>
+                            <% if(orderBy_field == field.name){ %>
+                                <% if(orderBy_type == 'asc'){ %>
+                                    <th><a href="/app/v1/getQueryResult?orderBy_field=<%=field.name%>&orderBy_type=<%= orderBy_type %>" > <%= (field.name).replaceAll("_"," ") %> &#9661; &#9650;</a></th>
+                                <% } else { %>
+                                    <th><a href="/app/v1/getQueryResult?orderBy_field=<%=field.name%>&orderBy_type=<%= orderBy_type %>" > <%= (field.name).replaceAll("_"," ") %> &#9660; &#9651;</a></th>
+                            <% } } else { %>
+                                <th><a href="/app/v1/getQueryResult?orderBy_field=<%=field.name%>&orderBy_type=<%= orderBy_type %>" > <%= (field.name).replaceAll("_"," ") %> &#9661; &#9651;</a></th>
+                        <% } }) %>
+                    </tr>
+
+                    <% data.forEach(singleData=> { %>
+                        <tr>
+                            <% fields.forEach(field=> { %>
+                                <% if(field.type == 10) { %>
+                                    <td><%= (singleData[field.name]).toDateString() %></td>
+                                <% }else if(field.type == 12){ %>
+                                    <td><%= (singleData[field.name]).toLocaleString() %></td>
+                                <% }else{ %>
+                                    <td><%= (singleData[field.name]) %></td>
+                                <% } %>
+                            <% }) %>
+                        </tr>
+                    <% }) %>
+                    
+                </table>
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>

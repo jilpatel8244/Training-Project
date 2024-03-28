@@ -7,7 +7,6 @@ exports.authenticateUser = (req, res, next) => {
     if(token){
         try {
             const decode = jwt.verify(token, process.env.JWT_SECRET);
-            req.body = decode;
             next();
         } catch (error) {
             res.render('pages/login_page');

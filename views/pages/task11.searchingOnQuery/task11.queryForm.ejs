@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Query Form</title>
+    <style>
+        .container {
+            padding: 30px 0;
+            margin: 0 auto;
+            width: 80%;
+        }
+
+        .row1 {
+            width: 100%;
+            display: flex;
+            justify-content: space-around;;
+        }
+
+        td,th{
+            text-align: center;
+            padding: 15px 10px;
+        }
+
+        table,
+        tr,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+
+        th{
+            text-transform: capitalize;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <section>
+            <div class="container">
+                <div class="row1">
+                    <form action="/app/v1/getQueryResult" method="post">
+                        <textarea name="sql" id="sql" cols="50" rows="5" placeholder="Enter your query here"
+                            required></textarea>
+                        <input type="submit" value="Go">
+                    </form>
+                    <table>
+                        <tr>
+                            <th>table names</th>
+                        </tr>
+                        <tr>
+                            <td>student_master_for_task9_attendance_report</td>
+                        </tr>
+                        <tr>
+                            <td>attendance</td>
+                        </tr>
+                        <tr>
+                            <td>exam_result</td>
+                        </tr>
+                        <tr>
+                            <td>exam_type</td>
+                        </tr>
+                        <tr>
+                            <td>subjects</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>
