@@ -7,11 +7,10 @@
     <style>
         .header{
             text-align: center;
-            color: #c8a7f8;
+            /* color: #563a80; */
         }
         body{
             font-family: sans-serif;
-            background-color: #edeeff ;
         }
         .main{
             display: flex;
@@ -22,6 +21,20 @@
             text-align: center;
             padding: 20px;
         }
+        table{
+            min-width: 70%;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+        .main > div {
+            width: 100%;
+        }
+        .tr-heading{
+            background: #8080803b;
+        }
+        /* tr:nth-child(even){
+            background: #8080803b;
+        } */
     </style>
 </head>
 <body>
@@ -30,6 +43,8 @@
             <div class="home">
                 <div class="header">
                     <h1>Wellcome to the project grid</h1>
+                    <h2>Jil Patel</h2>
+                    <pre>24DEV010</pre>
                 </div>
                 <div class="main">
                     <div>
@@ -42,6 +57,9 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <tr class="tr-heading">
+                                    <td colspan="3">JS Projects</td>
+                                </tr>
                                 <tr>
                                     <td>1</td>
                                     <td>Dynamic-Grid</td>
@@ -62,6 +80,9 @@
                                     <td>Event Table</td>
                                     <td><a href="/app/v1/projects/eventTable">Event Table</a></td>
                                 </tr>
+                                <tr class="tr-heading">
+                                    <td colspan="3">CSS Projects</td>
+                                </tr>
                                 <tr>
                                     <td>5</td>
                                     <td>WebPageDesign : ehya</td>
@@ -76,6 +97,9 @@
                                     <td>7</td>
                                     <td>WebPageDesign : hireX</td>
                                     <td><a href="/app/v1/projects/hireX">WebPageDesign : hireX</a></td>
+                                </tr>
+                                <tr class="tr-heading">
+                                    <td colspan="3">Express Projects</td>
                                 </tr>
                                 <tr>
                                     <td>8</td>
@@ -118,7 +142,7 @@
                                 <tr>
                                     <td>15</td>
                                     <td>timezone converter</td>
-                                    <td><a href="/app/v1/projects/task15/getTimeZone">timezone converter</a></td>
+                                    <td><a href="/app/v1/projects/task15/getTimeZone">timezone converter</a><br></td>
                                 </tr>
                                 <tr>
                                     <td>16</td>

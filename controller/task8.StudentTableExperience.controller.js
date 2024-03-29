@@ -1,6 +1,8 @@
 const connection = require("../config/database");
-require('dotenv').config();
+const CustomError = require("../helper/CustomError");
+const { studentList, getAllStudentsBasedOnOrderBy } = require("../services/task8.StudentTableExperiment.services");
 
+require('dotenv').config();
 
 var NO_OF_RECORDS_PER_PAGE = Number(process.env.NO_OF_RECORDS_PER_PAGE);
 var CURRENT_PAGE = Number(process.env.CURRENT_PAGE);
@@ -13,47 +15,48 @@ connection.query("select count(*) as count from student_master", function (err, 
 });
 
 
-exports.getAllStudentsHandler = (req, res) => {
+exports.getAllStudentsHandler = async (req, res, next) => {
+    try {
+        CURRENT_PAGE = Number(req.query.page_no) || 1;
 
-    CURRENT_PAGE = Number(req.query.page_no) || 1;
+        var pageEnd = Math.ceil(count / NO_OF_RECORDS_PER_PAGE);
 
+        if (Number(req.query.page_no) > pageEnd) {
+            CURRENT_PAGE = pageEnd;
+        }
+        else if(Number(req.query.page_no) < 1){
+            CURRENT_PAGE = 1;
+        }
 
-    var pageEnd = Math.ceil(count / NO_OF_RECORDS_PER_PAGE);
+        let offset_value = (CURRENT_PAGE * NO_OF_RECORDS_PER_PAGE) - NO_OF_RECORDS_PER_PAGE;
+    
+        await getAllStudentsBasedOnOrderBy(req, res, field_value, NO_OF_RECORDS_PER_PAGE, offset_value, CURRENT_PAGE, pageEnd);
 
-    if (Number(req.query.page_no) > pageEnd) {
-        CURRENT_PAGE = pageEnd;
+    } catch (error) {
+        const err = new CustomError(error.message, 500);
+        next(err);
     }
-    else if(Number(req.query.page_no) < 1){
+}
+
+exports.getAllStudentsBasedOnOrderHandler = (req, res, next) => {
+    try {
         CURRENT_PAGE = 1;
+
+        field_value = req.query.field_val || 's_id';
+        
+        res.redirect("/app/v1/getAllStudents");
+    } catch (error) {
+        const err = new CustomError(error.message, 500);
+        next(err);
     }
-
-    let offset_value = (CURRENT_PAGE * NO_OF_RECORDS_PER_PAGE) - NO_OF_RECORDS_PER_PAGE;
-    connection.query(`select * from student_master order by ${field_value} limit ? offset ?`, [NO_OF_RECORDS_PER_PAGE, offset_value], function (err, result) {
-        if (err) throw err;
-        res.render("pages/task8.StudentTableExperiment.ejs", {
-            data: result,
-            current_page: CURRENT_PAGE,
-            pageEnd: pageEnd
-        });
-    });
 }
 
-exports.getAllStudentsBasedOnOrderHandler = (req, res) => {
-
-    CURRENT_PAGE = 1;
-
-    field_value = req.query.field_val || 's_id';
-    
-    res.redirect("/app/v1/getAllStudents");
-}
-
-exports.listAllStudentsHandler = (req, res) => {
-    
-    connection.query(`select * from student_master`, function (err, result) {
-        if (err) throw err;
-        res.render("pages/task8.StudentTableExperiment.ejs", {
-            data: result
-        });
-    });
+exports.listAllStudentsHandler = async (req, res, next) => {
+    try {
+        await studentList(req, res);
+    } catch (error) {
+        const err = new CustomError(error.message, 500);
+        next(err);
+    }
 }
 

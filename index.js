@@ -14,6 +14,8 @@ const task13DelimeterSearch = require('./routes/all express tasks routes/task13.
 const task14JsonPlaceholderAPI = require('./routes/all express tasks routes/task14.jsonPlaceholderApi.routes');
 const task15TimezoneConverter = require('./routes/all express tasks routes/task15.timezoneConverter.routes');
 const task16JobAppForm = require('./routes/all express tasks routes/task16.jobAppForm.routes');
+const CustomError = require('./helper/CustomError');
+const { globalErrorHandler } = require('./middleware/errorHandling.middleware');
 
 
 
@@ -41,7 +43,12 @@ app.use('/app/v1', task14JsonPlaceholderAPI);
 app.use('/app/v1', task15TimezoneConverter);
 app.use('/app/v1', task16JobAppForm);
 
+app.all("*", (req, res, next) => {
+    const error = new CustomError(`can't find ${req.originalUrl} on the server`, 404);
+    next(error);
+});
 
+app.use(globalErrorHandler);
 
 app.listen(process.env.PORT || 3000, (req, res) => {
     console.log("app is running on port 3000");

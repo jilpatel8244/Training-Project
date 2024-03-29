@@ -1,4 +1,5 @@
 async function register(event) {
+    try {
         event.preventDefault();
         document.getElementById("error_message").innerHTML = "";
     
@@ -31,9 +32,13 @@ async function register(event) {
                 document.getElementById("error_message").innerHTML = response.message;
             }
         }
+    } catch (error) {
+        console.error(error);
+    }
 }
 
 async function login(event) {
+    try {
         event.preventDefault();
         document.getElementById("error_message").innerHTML = "";
     
@@ -62,110 +67,125 @@ async function login(event) {
                 document.getElementById("error_message").innerHTML = response.message;
             }
         }
+    } catch (error) {
+        console.error(error);
+    }
 }
 
 async function timeout(event){
-    event.preventDefault();
-    document.getElementById("error_message").innerHTML = "";
+    try {
+        event.preventDefault();
+        document.getElementById("error_message").innerHTML = "";
 
-    let form = document.getElementById("timeout_form");
-    let form_data = new FormData(form);
+        let form = document.getElementById("timeout_form");
+        let form_data = new FormData(form);
 
-    let json_data = {};
-    for(const [key, value] of form_data.entries()){
-        json_data[key] = value;
-    }
-
-    let data =  await fetch("/app/v1/generateNewLink", {
-        method: "POST", 
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(json_data), // body data type must match "Content-Type" header
-    });
-
-    let response = await data.json();
-
-    if(response.success == true){
-        let submit_btn = document.getElementById('submit_btn');
-        let activation_link = document.createElement('a');
-        activation_link.setAttribute("href", `/app/v1/create_confirm_render/?userInsertedId=${response.id}`);
-        activation_link.innerHTML = activation_link;
-        submit_btn.parentElement.replaceChild(activation_link, submit_btn);
-
-    } else {
-        document.getElementById("error_message").innerHTML = response.message;
-    }
-}
-
-async function password(event){
-    event.preventDefault();
-    document.getElementById("error_message").innerHTML = "";
-
-    let form = document.getElementById("password_form");
-    let form_data = new FormData(form);
-
-    let json_data = {};
-    for(const [key, value] of form_data.entries()){
-        json_data[key] = value;
-    }
-
-    if (validateUser(json_data)) {
-        // check both password are same
-        if (json_data['create_password'] == json_data['confirm_password']){
-
-            let data =  await fetch("/app/v1/activateUser", {
-                    method: "POST", 
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(json_data), // body data type must match "Content-Type" header
-                });
-
-                let response = await data.json();
-                if(response.success){
-                    window.location = "/app/v1/login";
-                }
-
-        } else {
-            document.getElementById("error_message").innerHTML = "create password and confirm password are not match";
+        let json_data = {};
+        for(const [key, value] of form_data.entries()){
+            json_data[key] = value;
         }
-    }
-}
 
-async function verify_email(event){
-    event.preventDefault();
-    document.getElementById("error_message").innerHTML = "";
-
-    let form = document.getElementById("verify_email_form");
-    let form_data = new FormData(form);
-
-    let json_data = {};
-    for(const [key, value] of form_data.entries()){
-        json_data[key] = value;
-    }
-
-    if (validateUser(json_data)) {
-        let data =  await fetch("/app/v1/verifyEmail", {
+        let data =  await fetch("/app/v1/generateNewLink", {
             method: "POST", 
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(json_data), // body data type must match "Content-Type" header
         });
-    
+
         let response = await data.json();
-    
+
         if(response.success == true){
             let submit_btn = document.getElementById('submit_btn');
             let activation_link = document.createElement('a');
-            activation_link.setAttribute("href", `/app/v1/forgetPassword/?activation_code=${response.activation_code}&userInsertedId=${response.id}`);
+            activation_link.setAttribute("href", `/app/v1/create_confirm_render/?userInsertedId=${response.id}`);
             activation_link.innerHTML = activation_link;
             submit_btn.parentElement.replaceChild(activation_link, submit_btn);
-    
+
         } else {
             document.getElementById("error_message").innerHTML = response.message;
-        }   
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+async function password(event){
+    try {
+        event.preventDefault();
+        document.getElementById("error_message").innerHTML = "";
+
+        let form = document.getElementById("password_form");
+        let form_data = new FormData(form);
+
+        let json_data = {};
+        for(const [key, value] of form_data.entries()){
+            json_data[key] = value;
+        }
+
+        if (validateUser(json_data)) {
+            // check both password are same
+            if (json_data['create_password'] == json_data['confirm_password']){
+
+                let data =  await fetch("/app/v1/activateUser", {
+                        method: "POST", 
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(json_data), // body data type must match "Content-Type" header
+                    });
+
+                    let response = await data.json();
+                    if(response.success){
+                        window.location = "/app/v1/login";
+                    }
+
+            } else {
+                document.getElementById("error_message").innerHTML = "create password and confirm password are not match";
+            }
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+async function verify_email(event){
+    try {
+        event.preventDefault();
+        document.getElementById("error_message").innerHTML = "";
+
+        let form = document.getElementById("verify_email_form");
+        let form_data = new FormData(form);
+
+        let json_data = {};
+        for(const [key, value] of form_data.entries()){
+            json_data[key] = value;
+        }
+
+        if (validateUser(json_data)) {
+            let data =  await fetch("/app/v1/verifyEmail", {
+                method: "POST", 
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(json_data), // body data type must match "Content-Type" header
+            });
+        
+            let response = await data.json();
+        
+            if(response.success == true){
+                let submit_btn = document.getElementById('submit_btn');
+                let activation_link = document.createElement('a');
+                activation_link.setAttribute("href", `/app/v1/forgetPassword/?activation_code=${response.activation_code}&userInsertedId=${response.id}`);
+                activation_link.innerHTML = activation_link;
+                submit_btn.parentElement.replaceChild(activation_link, submit_btn);
+        
+            } else {
+                document.getElementById("error_message").innerHTML = response.message;
+            }   
+        }
+    } catch (error) {
+        console.error(error);
     }
 }
     

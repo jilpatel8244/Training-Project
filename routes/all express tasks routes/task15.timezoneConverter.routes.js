@@ -8,5 +8,4 @@ router.get('/projects/task15/getTimeZone', authenticateUser, (req, res) => {
 });
 
 
-
 module.exports = router;
