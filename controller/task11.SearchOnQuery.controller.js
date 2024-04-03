@@ -1,13 +1,13 @@
 const connection = require('../config/database');
 require('dotenv').config();
-var count;
-var pageEnd;
-var offset_value;
-var NO_OF_RECORDS_PER_PAGE = Number(process.env.NO_OF_RECORDS_PER_PAGE);
-var CURRENT_PAGE = Number(process.env.CURRENT_PAGE);
-var sql;
-var orderBy_field;
-var orderBy_type = 'asc';
+let count;
+let pageEnd;
+let offset_value;
+let NO_OF_RECORDS_PER_PAGE = Number(process.env.NO_OF_RECORDS_PER_PAGE);
+let CURRENT_PAGE = Number(process.env.CURRENT_PAGE);
+let sql;
+let orderBy_field;
+let orderBy_type = 'asc';
 
 
 exports.checkQuery = (req, res, next) => {
@@ -28,7 +28,6 @@ exports.checkQuery = (req, res, next) => {
             res.render("pages/task11.searchingOnQuery/task11.errorPage.ejs", { err: err, message: "database error", success: "false" });
         } else {
             count = result.length;
-            // IF we are using post request : use req.body instead
             CURRENT_PAGE = Number(req.query.page_no) || 1;
             pageEnd = Math.ceil(count / NO_OF_RECORDS_PER_PAGE);
             offset_value = (CURRENT_PAGE * NO_OF_RECORDS_PER_PAGE) - NO_OF_RECORDS_PER_PAGE;

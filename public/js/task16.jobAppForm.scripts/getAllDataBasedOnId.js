@@ -1,7 +1,6 @@
 function fetchAllData() {
     const searchParams = new URLSearchParams(window.location.search);
     // console.log(searchParams.get('id'));
-    console.log("inside else");
     
     const xhr = new XMLHttpRequest();
     xhr.open("GET", `/app/v1/getDataOfSpecificUser/?id=${searchParams.get('id')}`, true);

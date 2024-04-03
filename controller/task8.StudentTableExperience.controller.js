@@ -1,25 +1,28 @@
 const connection = require("../config/database");
 const CustomError = require("../helper/CustomError");
+const { getAllStudentsCount } = require("../helper/getAllStudentsCount");
 const { studentList, getAllStudentsBasedOnOrderBy } = require("../services/task8.StudentTableExperiment.services");
-
 require('dotenv').config();
+let NO_OF_RECORDS_PER_PAGE = Number(process.env.NO_OF_RECORDS_PER_PAGE);
+let CURRENT_PAGE = Number(process.env.CURRENT_PAGE);
+let field_value = "s_id";
+let count;
 
-var NO_OF_RECORDS_PER_PAGE = Number(process.env.NO_OF_RECORDS_PER_PAGE);
-var CURRENT_PAGE = Number(process.env.CURRENT_PAGE);
-var field_value = "s_id";
-var count;
-
-connection.query("select count(*) as count from student_master", function (err, result) {
-    if (err) throw err;
-    count = result[0].count;
-});
+async function fillCount(){
+    try {
+      count = await getAllStudentsCount('student_master');
+    } catch (error) {
+      console.log(error.message);
+    }
+}
+fillCount();
 
 
 exports.getAllStudentsHandler = async (req, res, next) => {
     try {
         CURRENT_PAGE = Number(req.query.page_no) || 1;
 
-        var pageEnd = Math.ceil(count / NO_OF_RECORDS_PER_PAGE);
+        let pageEnd = Math.ceil(count / NO_OF_RECORDS_PER_PAGE);
 
         if (Number(req.query.page_no) > pageEnd) {
             CURRENT_PAGE = pageEnd;
@@ -40,8 +43,6 @@ exports.getAllStudentsHandler = async (req, res, next) => {
 
 exports.getAllStudentsBasedOnOrderHandler = (req, res, next) => {
     try {
-        CURRENT_PAGE = 1;
-
         field_value = req.query.field_val || 's_id';
         
         res.redirect("/app/v1/getAllStudents");

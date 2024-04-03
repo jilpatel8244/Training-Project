@@ -1,6 +1,5 @@
 document.getElementById("form").addEventListener("submit", (event) => {
     event.preventDefault();
-    console.log("inside if");
 
     let form = document.getElementById("form");
     let form_data = new FormData(form);

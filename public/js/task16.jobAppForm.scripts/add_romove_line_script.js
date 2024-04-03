@@ -20,7 +20,7 @@ function add_work_experience(){
     <input type="date" name="company_to[]" id="company${no_of_lines+1}_to" onfocusout="error_span_text_removal(id)"><br>
     <span id="company${no_of_lines+1}_to_error" class="red"></span>
 
-    <button type="button" onclick="remove_line(event)">delete</button>
+    <button type="button" onclick="remove_work_experience(event)">delete</button>
     <input type="hidden" name="isDeletedWorkExp[]" value="false"> 
     <input type="hidden" name="idWorkExp[]" value="null" id="company${no_of_lines+1}_id">`
 
@@ -46,20 +46,29 @@ function add_reference() {
     <input type="text" name="referance_relation[]" id="referance_relation_${no_of_lines+1}" onfocusout="error_span_text_removal(id)">
     <span id="referance_relation_${no_of_lines+1}_error" class="red"></span>
 
-    <button type="button" onclick="remove_line(event)">delete</button>
+    <button type="button" onclick="remove_reference(event)">delete</button>
     <input type="hidden" name="isDeletedReference[]" value="false">
     <input type="hidden" name="idReference[]" value="null" id="referance_id_${no_of_lines+1}">`
 
     reference_contact.appendChild(new_div);
 }
 
-function remove_line(event){
-    //1 vadhyo hoy to delete na thay handle karvanu baki che
-    
-    // console.log(event.target.parentElement.parentElement.childElementCount);
+function remove_work_experience(event){
+    let deletedTag = event.target.parentElement;
+    let allInputOfDeletedTag = Array.from(deletedTag.getElementsByTagName("input"));
+    allInputOfDeletedTag.pop();
+    allInputOfDeletedTag.pop();
 
-    // if (event.target.parentElement.parentElement.childElementCount > 1) {
-        event.target.nextElementSibling.value = "true";
-        event.target.parentElement.style.display = "none";
-    // }
+    allInputOfDeletedTag.forEach(element => {
+        element.value = "";
+    });
+
+    
+
+    event.target.nextElementSibling.value = "true";
+    event.target.parentElement.style.display = "none";
+}
+
+function remove_reference(event) {
+    
 }

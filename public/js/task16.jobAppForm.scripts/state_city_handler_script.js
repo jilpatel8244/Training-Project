@@ -4,7 +4,6 @@ function showState(val) {
     let cities_select = document.getElementById("city");
     
     if (!val) {
-        // 
         cities_select.innerHTML = `<option value="">-- select city --</option>`;
         xhttp.onload = function() {
             let allfetchedStates = JSON.parse(this.responseText);

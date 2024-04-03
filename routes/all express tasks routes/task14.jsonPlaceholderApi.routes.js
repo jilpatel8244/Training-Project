@@ -9,11 +9,7 @@ router.get("/projects/task14/getAllPosts", authenticateUser, (req, res)=> {
 })
 
 router.get("/getSinglePostDetails", authenticateUser, (req, res)=> {
-    if (req.query.id <= 100 && req.query.id > 0) {
-        res.render("pages/task14.jsonPlaceholderAPI/task14.singlePost.ejs", {id : req.query.id});
-    } else{
-        res.send("sorry mention id is not valid");
-    }
+    res.render("pages/task14.jsonPlaceholderAPI/task14.singlePost.ejs", {id : req.query.id});
 })
 
 module.exports = router;

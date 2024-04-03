@@ -168,24 +168,29 @@ function work_exp_page_validation(){
     }
 }
 
-function reference_page_validation(){
-    let reference_contact_line_complte_fillup = work_experience_reference_check_line("reference_contact");
+// function reference_page_validation(){
+//     let reference_contact_line_complte_fillup = work_experience_reference_check_line("reference_contact");
 
-    if(reference_contact_line_complte_fillup == false){
-        return false;
-    } else{
-        return true;  
-    }
-}
+//     if(reference_contact_line_complte_fillup == false){
+//         return false;
+//     } else{
+//         return true;  
+//     }
+// }
 
 function work_experience_reference_check_line(reference_or_workexperience){
     let line = Array.from(document.querySelectorAll(`.${reference_or_workexperience} input`));
+    
     line.pop();
     line.pop();
-
-    let filteredData = line.filter((data) => {
-        return !data.value
-    })
+    // line = line.filter((element) => {
+        //     return !element.type
+        // })
+        
+        let filteredData = line.filter((data) => {
+            return !data.value
+        })
+        console.log(filteredData);
 
     if (filteredData.length != 0 && filteredData.length != line.length) {
         

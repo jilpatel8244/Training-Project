@@ -24,7 +24,7 @@
                 </form>
             </div>
 
-           <% if(data.length != 0 && message == true){ %>
+           <% if(data.length != 0 && isValidInput == true){ %>
             <div class="row">
                 
                     <table>
@@ -75,11 +75,9 @@
                             </tr>
                             <% }) %>
                     </table>
-
-                
             </div>
-            <% }else if(message == false){ %>
-                <p>Wrong input</p>
+            <% }else if (isValidInput == false) { %>
+                <p>invalid input</p>
             <% }else{ %>
                 <p>Record not found</p>
             <% } %>
@@ -91,5 +89,8 @@
 </html>
 
 
-
+<!-- example string -->
+<!-- _r_a^g -->
+<!-- _r_j -->
+<!-- _a -->
 <!-- _rijvan^juneja$juneja@gmail.com:surat}male{200 -->
