@@ -8,6 +8,7 @@ function fetchAllData() {
     xhr.onload = async function() {
         if (this.status == 200) {
             let obtainedData = JSON.parse(this.responseText);
+            console.log(obtainedData);
 
             // basic details
             for (const iterator in obtainedData.basic_details) {
@@ -117,11 +118,13 @@ function fetchAllData() {
 
             // for states and cities
 
-
             let state = document.getElementById("state");
             state.value = obtainedData.basic_details['state'];
             showState(obtainedData.basic_details['state']);
 
+
+            let city = document.getElementById("city");
+            city.innerHTML = obtainedData.basic_details['city'];
         }
     }
 

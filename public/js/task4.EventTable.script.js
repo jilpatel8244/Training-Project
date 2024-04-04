@@ -13,7 +13,7 @@ function onbeforeprintHandler() {
 
 // animation event handler
 function eventHandler() {
-    var td2 = document.getElementById("mydiv2");
+    let td2 = document.getElementById("mydiv2");
     td2.style.animation = "mymove 4s 2";
 
     td2.addEventListener("animationstart", function () {
@@ -60,7 +60,7 @@ function onfocusoutHandler(x) {
 
 //select handler
 function selectHandler() {
-    var x = document.getElementById("mySelect").value;
+    let x = document.getElementById("mySelect").value;
     alert("You selected: " + x);
 }
 
@@ -112,7 +112,7 @@ function onerrorHandler() {
 }
 
 function openFullscreen() {
-    var elem = document.documentElement;
+    let elem = document.documentElement;
 
     if (elem.requestFullscreen) {
         elem.requestFullscreen();

@@ -1,9 +1,7 @@
-var element = 'x';
-var oClicked = [];
-var xClicked = [];
-var count = 0;
-
-document.getElementById("status").innerHTML = "Playing...";
+let element = 'x';
+let oClicked = [];
+let xClicked = [];
+let count = 0;
 
 const tdTag = document.getElementsByTagName("td");
 for (let i = 0; i < 9; i++) {
@@ -19,7 +17,6 @@ function clickHandler() {
         xClicked.push(clickedCell.id);
         clickedCell.removeEventListener("click", clickHandler);
         count++;
-        checker = xClicked
     }
     else {
         clickedCell.innerHTML = "o";
@@ -27,7 +24,6 @@ function clickHandler() {
         oClicked.push(clickedCell.id);
         clickedCell.removeEventListener("click", clickHandler);
         count++;
-        checker = oClicked;
     }
 
     if ((oClicked.includes("1") && oClicked.includes("2") && oClicked.includes("3")) || (oClicked.includes("4") && oClicked.includes("5") && oClicked.includes("6")) || (oClicked.includes("7") && oClicked.includes("8") && oClicked.includes("9")) || (oClicked.includes("1") && oClicked.includes("4") && oClicked.includes("7")) || (oClicked.includes("2") && oClicked.includes("5") && oClicked.includes("8")) || (oClicked.includes("3") && oClicked.includes("6") && oClicked.includes("9")) || (oClicked.includes("1") && oClicked.includes("5") && oClicked.includes("9")) || (oClicked.includes("3") && oClicked.includes("5") && oClicked.includes("7"))) {

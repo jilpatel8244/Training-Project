@@ -143,8 +143,10 @@ exports.insertData = async (req, res, next) => {
         await insertTechnologiesKnown(req, res, new_candidate_inserted_id);
         res.send("insertd successfully");
     } catch (error) {
-        const err = new CustomError(error.message, 500);
-        next(err);
+        res.staus(500).json({
+            success: false,
+            message: error.message
+        })
     }
 }
 
@@ -182,7 +184,7 @@ insertEducationDetails = (req, res, new_candidate_inserted_id) => {
 
     return new Promise((resolve, reject) => {
 
-        var sql = "insert into education_details (candidate_id, education_type, board_name_or_univercity_name, passing_year, passing_percentage) values (?, ?, ?, ?, ?)";
+        let sql = "insert into education_details (candidate_id, education_type, board_name_or_univercity_name, passing_year, passing_percentage) values (?, ?, ?, ?, ?)";
         if (req.body.board_name_or_univercity_name.length != 0) {
             req.body.board_name_or_univercity_name.forEach((element, index) => {
                 if (element != "") {
@@ -201,7 +203,7 @@ insertEducationDetails = (req, res, new_candidate_inserted_id) => {
 };
 
 insertWorkExperience = (req, res, new_candidate_inserted_id) => {
-    var sql = "insert into work_exp (candidate_id, company_name, work_designation, work_from, work_to) values (?, ?, ?, ?, ?);";
+    let sql = "insert into work_exp (candidate_id, company_name, work_designation, work_from, work_to) values (?, ?, ?, ?, ?);";
 
     return new Promise((resolve, reject) => {
         if (req.body.company_name.length != 0) {
@@ -220,7 +222,7 @@ insertWorkExperience = (req, res, new_candidate_inserted_id) => {
 };
 
 insertReferenceDetailsEntry = (req, res, new_candidate_inserted_id) => {
-    var sql = "insert into reference_contact (candidate_id, ref_name, ref_contact, ref_relation) values (?, ?, ?, ?);";
+    let sql = "insert into reference_contact (candidate_id, ref_name, ref_contact, ref_relation) values (?, ?, ?, ?);";
 
     return new Promise((resolve, reject) => {
         if (req.body.referance_name.length != 0) {
@@ -239,7 +241,7 @@ insertReferenceDetailsEntry = (req, res, new_candidate_inserted_id) => {
 };
 
 insertPreferenceDetails = (req, res, new_candidate_inserted_id) => {
-    var sql = "insert into preferences (candidate_id, prefered_location, notice_period, department, expected_ctc, current_ctc) values (?, ?, ?, ?, ?, ?);";
+    let sql = "insert into preferences (candidate_id, prefered_location, notice_period, department, expected_ctc, current_ctc) values (?, ?, ?, ?, ?, ?);";
 
     return new Promise((resolve, reject) => {
         connection.query(sql, [new_candidate_inserted_id, req.body.preferd_location, req.body.notice_period || null, req.body.department, req.body.expectedCTC || null, req.body.currentCTC || null], (error, results) => {
@@ -253,7 +255,7 @@ insertPreferenceDetails = (req, res, new_candidate_inserted_id) => {
 };
 
 insertLanguageKnown = (req, res, new_candidate_inserted_id) => {
-    var sql = "insert into language_known (candidate_id, l_name, l_read, l_write, l_speak) values (?, ?, ?, ?, ?);";
+    let sql = "insert into language_known (candidate_id, l_name, l_read, l_write, l_speak) values (?, ?, ?, ?, ?);";
 
     return new Promise((resolve, reject) => {
         if ("language" in req.body) {
@@ -283,7 +285,7 @@ insertLanguageKnown = (req, res, new_candidate_inserted_id) => {
 };
 
 insertTechnologiesKnown = (req, res, new_candidate_inserted_id) => {
-    var sql = "insert into technologies_known (candidate_id, t_name, t_expretise) values (?, ?, ?);";
+    let sql = "insert into technologies_known (candidate_id, t_name, t_expretise) values (?, ?, ?);";
 
     return new Promise((resolve, reject) => {
         if ("technologies" in req.body) {
@@ -328,8 +330,10 @@ exports.updateHandler = async (req, res, next) => {
 
         res.send("updated successfully");
     } catch (error) {
-        const err = new CustomError(error.message, 500);
-        next(err);    
+        res.staus(500).json({
+            success: false,
+            message: error.message
+        }) 
     }
 }
 
@@ -349,7 +353,7 @@ function basicDetailUpdation(req, res) {
         req.body.email,
     ]
 
-    var sql = `update basic_details set first_name = ?, last_name = ?, designation = ?, gender = ?, address = ?, relationship_status = ?, city = ?, state = ?, phone = ?, zip_code = ?, dob = ?, email = ? where id = ${req.body.id_of_the_person_we_need_update}`;
+    let sql = `update basic_details set first_name = ?, last_name = ?, designation = ?, gender = ?, address = ?, relationship_status = ?, city = ?, state = ?, phone = ?, zip_code = ?, dob = ?, email = ? where id = ${req.body.id_of_the_person_we_need_update}`;
 
     return new Promise((resolve, reject) => {
         connection.query(sql, basic_details, (error, results) => {
@@ -371,7 +375,7 @@ function educationDetailInsertion(req, res) {
                 return reject(error);
             }
 
-            var sql = `insert into education_details (candidate_id, education_type, board_name_or_univercity_name, passing_year, passing_percentage) values (?, ?, ?, ?, ?)`;
+            let sql = `insert into education_details (candidate_id, education_type, board_name_or_univercity_name, passing_year, passing_percentage) values (?, ?, ?, ?, ?)`;
 
             req.body.board_name_or_univercity_name.forEach((element, index) => {
                 if (element != "") {

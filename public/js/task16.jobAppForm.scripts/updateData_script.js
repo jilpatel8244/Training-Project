@@ -11,8 +11,8 @@ document.getElementById("form").addEventListener("submit", (event) => {
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
     xhr.onload = function() {
+        console.log(this.responseText);
         if (this.status == 200) {
-            console.log(this.responseText);
             window.location = '/app/v1/displayFilledCandidates'
         }
     }

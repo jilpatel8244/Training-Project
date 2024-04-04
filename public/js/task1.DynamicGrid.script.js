@@ -3,8 +3,7 @@ function CollAdd(){
     let noOfRows = document.getElementById("member_body").rows.length;
 
     for (let i = 0; i < noOfRows; i++) {
-        var new_td = document.createElement("td");
-        new_td.classList.add("red");
+        let new_td = document.createElement("td");
         new_td.classList.add("box");
 
         const existing_row = document.getElementById("member_body").rows[i];
@@ -13,13 +12,12 @@ function CollAdd(){
 }
 
 function RowAdd(){
-    var noOfColumns = document.getElementById("member_body").rows[0].cells.length;
+    let noOfColumns = document.getElementById("member_body").rows[0].cells.length;
 
     const new_tr = document.createElement("tr");
 
     for (let i = 0; i < noOfColumns; i++) {
-        var new_td = document.createElement("td");
-        new_td.classList.add("red");
+        let new_td = document.createElement("td");
         new_td.classList.add("box");
         new_tr.appendChild(new_td);
     }
@@ -41,9 +39,10 @@ function DeleteRow(){
 }
 
 function DeleteCol(){
-    var noOfColumns = document.getElementById("member_body").rows[0].cells.length;
+    let noOfColumns = document.getElementById("member_body").rows[0].cells.length;
+    let noOfRows = document.getElementById("member_body").rows.length
     if (noOfColumns>2) {
-        for (let i = 0; i < noOfColumns; i++) {
+        for (let i = 0; i < noOfRows; i++) {
             const existingRow = document.getElementById("member_body").rows[i];
             const lastChild = existingRow.lastChild;
             lastChild.remove();

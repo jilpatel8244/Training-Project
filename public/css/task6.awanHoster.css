@@ -322,7 +322,7 @@ ul>li>button {
 .sec6-row2{
     display: flex;
     margin: 0 -15px;
-    overflow-x: auto;
+    /* overflow-x: auto; */
     scroll-behavior: smooth;
     overflow-x: hidden;
 }

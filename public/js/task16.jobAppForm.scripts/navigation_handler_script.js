@@ -31,6 +31,13 @@ function nextPage(){
                     displayPage();
                 }
                 break;
+
+            case 4:
+                if (language_and_technology_validation()) {
+                    pageCount += 1;
+                    displayPage();
+                }
+                break;
             
             case 5:
                 if (reference_page_validation()) {

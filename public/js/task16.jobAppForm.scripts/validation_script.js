@@ -6,9 +6,9 @@ function basic_details_page_validation(){
 
     const numberFields = ['phone_number', 'zipcode'];
 
-    const strFields = ['first_name', 'last_name', 'designation'];
+    const strFields = ['first_name', 'last_name'];
 
-    let allFields = [...requiredFields, ...numberFields, ...radioFieldsNames,...strFields];
+    let allFields = [...requiredFields, ...numberFields, ...radioFieldsNames, ...strFields];
 
     for (const element of allFields) {
         let error_span = document.getElementById(`${element}_error`);
@@ -192,9 +192,6 @@ function work_experience_reference_check_line(reference_or_workexperience){
             return !element.value;
         })
 
-        console.log(allDivs[singleDiv]);
-        console.log(filterdData);
-
         if ((filterdData.length != 0) && (allDivs[singleDiv].length != filterdData.length)) {
 
             filterdData.forEach((ele) => {
@@ -206,5 +203,48 @@ function work_experience_reference_check_line(reference_or_workexperience){
             return false;
         }
     }
+    return true;
+}
+
+function language_and_technology_validation(){
+    // validation for language
+    let getAllLanguage = Array.from(document.getElementsByName('language'));
+    let allCheckedLanguage = getAllLanguage.filter((element) => {
+        return element.checked == true;
+    })
+
+    for (let index = 0; index < allCheckedLanguage.length; index++) {
+        let getAllLanguageExpertise = Array.from(document.getElementsByName('expertise_' + allCheckedLanguage[index].value));
+
+        let allCheckedExpertise = getAllLanguageExpertise.filter((element) => {
+            return element.checked == true;
+        });
+
+        if (!allCheckedExpertise.length) {
+            document.getElementById(`${allCheckedLanguage[index].id}_error`).innerHTML = "plese enter the value";
+            return false;
+        }
+    }
+
+    //  validation for technology
+    let getAllTechnology = Array.from(document.getElementsByName('technologies'));
+    let allCheckedTechnology = getAllTechnology.filter((element) => {
+        return element.checked == true;
+    })
+    
+    for (let index = 0; index < allCheckedTechnology.length; index++) {
+        let getAllTechnologyExpertise = Array.from(document.getElementsByName('technologies_expertise_' + allCheckedTechnology[index].value));
+        
+        let allCheckedExpertise = getAllTechnologyExpertise.filter((element) => {
+            return element.checked == true;
+        });
+        console.log(allCheckedExpertise);
+
+        if (!allCheckedExpertise.length) {
+            document.getElementById(`${allCheckedTechnology[index].id}_error`).innerHTML = "plese enter the value";
+            return false;
+        }
+    }
+
     return true;
 }
