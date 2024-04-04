@@ -1,40 +1,52 @@
 const connection = require("../config/database");
 const CustomError = require("../helper/CustomError");
 
-exports.city_state_loader = (req, res) => {
-    if (req.query.state_id == undefined) {
-        connection.query("select * from states", (error, result) => {
-            if (error) {
-                console.log(error);
-            }
-            else {
-                res.send(result);
-            }
-        })
-    }
-    else {
-        console.log(req.query.state_id);
-        connection.query("select * from cities where state_id = ?", [req.query.state_id], (error, result) => {
-            if (error) {
-                console.log(error);
-            }
-            else {
-                res.send(result);
-            }
-        })
+exports.city_state_loader = (req, res, next) => {
+    try {
+        if (req.query.state_id == undefined) {
+            connection.query("select * from states", (error, result) => {
+                if (error) {
+                    console.log(error);
+                    throw error;
+                }
+                else {
+                    res.send(result);
+                }
+            })
+        }
+        else {
+            console.log(req.query.state_id);
+            connection.query("select * from cities where state_id = ?", [req.query.state_id], (error, result) => {
+                if (error) {
+                    console.log(error);
+                    throw error;
+                }
+                else {
+                    res.send(result);
+                }
+            })
+        }
+    } catch (error) {
+        const err = new CustomError(error.message, 500);
+        next(err);
     }
 }
 
-exports.getAllCandidateInfo = (req, res) => {
-    connection.query("select * from basic_details", (error, result) => {
-        if (error) throw error;
-
-        console.log(result);
-        res.send(result);
-    })
+exports.getAllCandidateInfo = (req, res, next) => {
+    try {
+        connection.query("select * from basic_details", (error, result) => {
+            if (error) throw error;
+    
+            console.log(result);
+            res.send(result);
+        })
+    } catch (error) {
+        const err = new CustomError(error.message, 500);
+        next(err);
+    }
 }
 
-exports.getDataOfSpecificUserHandler = async (req, res) => {
+exports.getDataOfSpecificUserHandler = async (req, res, next) => {
     try {
         let obj = await getData(req, res);
         res.send(obj);
@@ -45,11 +57,10 @@ exports.getDataOfSpecificUserHandler = async (req, res) => {
     }
 }
 
-
 function getData(req, res) {
     let obj = {};
 
-    // improvement : we can also get data in one query and then use it 
+    // improvement : we can also get all data in one query and then use it 
 
     return new Promise((resolve, reject) => {
         connection.query("select *, DATE_FORMAT(dob, '%Y-%m-%d') as dob from basic_details where id = ?", [req.query.id], (error, result) => {
@@ -58,7 +69,6 @@ function getData(req, res) {
             }
 
             obj.basic_details = result[0];
-
         });
 
         connection.query("select * from education_details where candidate_id = ?", [req.query.id], (error, result) => {
@@ -131,7 +141,7 @@ exports.insertData = async (req, res, next) => {
         await insertPreferenceDetails(req, res, new_candidate_inserted_id);
         await insertLanguageKnown(req, res, new_candidate_inserted_id);
         await insertTechnologiesKnown(req, res, new_candidate_inserted_id);
-
+        res.send("insertd successfully");
     } catch (error) {
         const err = new CustomError(error.message, 500);
         next(err);

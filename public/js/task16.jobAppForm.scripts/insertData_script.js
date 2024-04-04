@@ -11,6 +11,7 @@ document.getElementById("form").addEventListener("submit", (event) => {
     xhr.onload = function() {
         if (this.status == 200) {
             console.log(this.responseText);
+            window.location = '/app/v1/displayFilledCandidates'
         }
     }
 

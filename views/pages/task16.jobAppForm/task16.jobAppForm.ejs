@@ -197,7 +197,7 @@
                             <input type="date" name="company_to[]" id="company1_to" onfocusout="error_span_text_removal(id)"><br>
                             <span id="company1_to_error" class="red"></span>
 
-                            <button type="button" onclick="remove_work_experience(event)">delete</button>
+                            <button type="button" onclick="remove_work_experience_and_refer(event)">delete</button>
                             <input type="hidden" name="isDeletedWorkExp[]" value="false"> 
                             <input type="hidden" name="idWorkExp[]" value="null" id="company1_id">
                         </div>
@@ -305,7 +305,7 @@
                             <input type="text" name="referance_relation[]" id="referance_relation_1" onfocusout="error_span_text_removal(id)">
                             <span id="referance_relation_1_error" class="red"></span>
 
-                            <button type="button" onclick="remove_reference(event)">delete</button>
+                            <button type="button" onclick="remove_work_experience_and_refer(event)">delete</button>
                             <input type="hidden" name="isDeletedReference[]" value="false">
                             <input type="hidden" name="idReference[]" value="null" id="referance_id_1">
                         </div>

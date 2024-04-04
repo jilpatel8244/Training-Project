@@ -168,42 +168,41 @@ function work_exp_page_validation(){
     }
 }
 
-// function reference_page_validation(){
-//     let reference_contact_line_complte_fillup = work_experience_reference_check_line("reference_contact");
+function reference_page_validation(){
+    let reference_contact_line_complte_fillup = work_experience_reference_check_line("reference_contact");
 
-//     if(reference_contact_line_complte_fillup == false){
-//         return false;
-//     } else{
-//         return true;  
-//     }
-// }
+    if(reference_contact_line_complte_fillup == false){
+        return false;
+    } else{
+        return true;  
+    }
+}
 
 function work_experience_reference_check_line(reference_or_workexperience){
-    let line = Array.from(document.querySelectorAll(`.${reference_or_workexperience} input`));
-    
-    line.pop();
-    line.pop();
-    // line = line.filter((element) => {
-        //     return !element.type
-        // })
-        
-        let filteredData = line.filter((data) => {
-            return !data.value
-        })
-        console.log(filteredData);
+    let allDivs = Array.from(document.querySelectorAll(`.${reference_or_workexperience} div`));
 
-    if (filteredData.length != 0 && filteredData.length != line.length) {
+    for (let singleDiv = 0; singleDiv < allDivs.length; singleDiv++) {
+        allDivs[singleDiv] = Array.from(allDivs[singleDiv].getElementsByTagName('input'));
+        allDivs[singleDiv].pop();
+        allDivs[singleDiv].pop();
         
-        filteredData.forEach((ele) => {
-            if(!ele.value){
-                document.getElementById(`${ele.id}_error`).innerHTML = "plese enter the value";
-            }
+        let filterdData = allDivs[singleDiv].filter((element) => {
+            return !element.value;
         })
 
-        console.log("pleses fill all the fields");
-        return false;
+        console.log(allDivs[singleDiv]);
+        console.log(filterdData);
+
+        if ((filterdData.length != 0) && (allDivs[singleDiv].length != filterdData.length)) {
+
+            filterdData.forEach((ele) => {
+                if(!ele.value){
+                    document.getElementById(`${ele.id}_error`).innerHTML = "plese enter the value";
+                }
+            });
+            console.log("pleses fill all the fields");
+            return false;
+        }
     }
-    else{
-        return true;
-    }
+    return true;
 }
