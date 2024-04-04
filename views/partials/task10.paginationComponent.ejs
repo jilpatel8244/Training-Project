@@ -23,21 +23,21 @@
         <div class="container">
             <div class="row">
                 <% if(Number(current_page) != 1)  {%>
-                    <a href="/app/v1/getExamResult?page_no=1 %>"><button> &#x3c;&#x3c; </button></a>
-                    <a href="/app/v1/getExamResult?page_no=<%= Number(current_page)-1 %>"><button> &#x3c; </button></a>
+                    <a href="/app/v1/getExamResult?page_no=1"> &#x3c;&#x3c;</a>
+                    <a href="/app/v1/getExamResult?page_no=<%= Number(current_page)-1 %>">&#x3c; </a>
                 <% }else{ %>
-                    <a aria-disabled="true" href="/app/v1/getExamResult?page_no=1 %>"><button disabled> &#x3c;&#x3c; </button></a>
-                    <a aria-disabled="true" href="/app/v1/getExamResult?page_no=<%= Number(current_page)-1 %>"> <button disabled> &#x3c; </button></a>
+                    <a onclick="return false;"> &#x3c;&#x3c; </a>
+                    <a onclick="return false;">  &#x3c; </a>
                 <% } %>
 
                 <span><%= current_page %></span>
 
                 <% if(Number(current_page) != Number(pageEnd))  {%>
-                    <a href="/app/v1/getExamResult?page_no=<%= Number(current_page)+1 %>"><button> &#x3e; </button></a>
-                    <a href="/app/v1/getExamResult?page_no=<%= Number(pageEnd) %>"><button> &#x3e;&#x3e; </button></a>
+                    <a href="/app/v1/getExamResult?page_no=<%= Number(current_page)+1 %>"> &#x3e;</a>
+                    <a href="/app/v1/getExamResult?page_no=<%= Number(pageEnd) %>">&#x3e;&#x3e;  </a>
                 <% }else{ %>
-                    <a aria-disabled="true" href="/app/v1/getExamResult?page_no=<%= Number(current_page)+1 %>"><button disabled> &#x3e; </button></a>
-                    <a aria-disabled="true" href="/app/v1/getExamResult?page_no=<%= Number(pageEnd) %>"> <button disabled> &#x3e;&#x3e; </button></a>
+                    <a onclick="return false;">&#x3e;</a>
+                    <a onclick="return false;"> &#x3e;&#x3e; </a>
                 <% } %>
                 
             </div>

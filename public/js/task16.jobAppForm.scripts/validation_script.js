@@ -1,17 +1,16 @@
 function basic_details_page_validation(){
 
-    const allFields = ['first_name', 'last_name', 'designation', 'email', 'phone_number', 'dob', 'gender', 'address', 'state', 'city', 'zipcode'];
-
     const requiredFields = ['first_name', 'last_name', 'designation', 'email', 'phone_number', 'dob', 'address', 'state', 'city', 'zipcode'];
-
-    const numberFields = ['phone_number', 'zipcode'];
-
-    // const strFields = ['first_name', 'last_name', 'designation'];
 
     const radioFieldsNames = ['gender'];
 
-    for (const element of allFields) {
+    const numberFields = ['phone_number', 'zipcode'];
 
+    const strFields = ['first_name', 'last_name', 'designation'];
+
+    let allFields = [...requiredFields, ...numberFields, ...radioFieldsNames,...strFields];
+
+    for (const element of allFields) {
         let error_span = document.getElementById(`${element}_error`);
 
         if (requiredFields.includes(element) && !document.getElementById(element).value.trim()) {
@@ -51,14 +50,15 @@ function basic_details_page_validation(){
             return false;
 
         }
-        // if (strFields.includes(element) && !document.getElementById(element).value.match(/^[A-Za-z]+$/)) {
-        //     error_span.innerHTML = "please enter valid string";
+
+        if (strFields.includes(element) && !document.getElementById(element).value.match(/^[A-Za-z]+$/)) {
+            error_span.innerHTML = "please enter valid string";
             
-        //     document.getElementById(element).addEventListener("focusout", function () {
-        //         error_span.innerHTML = "";
-        //     })
-        //     return false;
-        // }
+            document.getElementById(element).addEventListener("focusout", function () {
+                error_span.innerHTML = "";
+            })
+            return false;
+        }
 
         if (radioFieldsNames.includes(element)) {
             let gender = Array.from(document.getElementsByName(element)); 
@@ -89,6 +89,8 @@ function education_details_page_validation(){
         return true;  
     }
 }
+
+// imptovements : i will combine education_check_line and education_check_line_1 sooner
 
 function education_check_line(sscOrhsc){
     let line;

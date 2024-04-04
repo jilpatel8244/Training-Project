@@ -26,18 +26,6 @@ function gridHandler(req, res, next) {
         let s_id = [];
         let gender = [];
 
-
-        function postCalc(i){
-            let post;
-            for (let j = i + 1; j < sql.length; j++) {
-                if (sql[j] == '_' || sql[j] == '^' || sql[j] == '$' || sql[j] == ':' || sql[j] == '!' || sql[j] == '{' || sql[j] == '}' || j == sql.length) {
-                    post = j;
-                    break;
-                }
-            }
-            return post;
-        }
-
         // find first(pre) and last(post) index of each string specified in sql and store it in respective array
         for (let i = 0; i < sql.length; i++) {
 
@@ -88,24 +76,6 @@ function gridHandler(req, res, next) {
 
         }
 
-
-        function finalString(arr, firld_name) {
-            if (arr.length == 0) {
-                let tempResult = `${firld_name} like '%' `;
-                return tempResult;
-            }
-
-            let tempResult = `${firld_name} like '${arr[0]}%' `;
-
-            if (arr.length > 1) {
-                for (let i = 1; i < arr.length; i++) {
-                    tempResult = tempResult + `or ${firld_name} like '${arr[i]}%'`
-                }
-            }
-            return tempResult;
-        }
-
-
         let first_name_str = finalString(first_name, "first_name");
         let last_name_str = finalString(last_name, "last_name");
         let email_str = finalString(email, "email");
@@ -117,7 +87,7 @@ function gridHandler(req, res, next) {
         connection.query(sql_query, (err, result) => {
             try {
                 if (err) {
-                    throw err
+                    throw err;
                 }
                 else {
                     res.render("pages/task13.studentData.ejs", {
@@ -137,5 +107,33 @@ function gridHandler(req, res, next) {
         next(err);
     }
 }
+
+function postCalc(i){
+    let post;
+    for (let j = i + 1; j < sql.length; j++) {
+        if (sql[j] == '_' || sql[j] == '^' || sql[j] == '$' || sql[j] == ':' || sql[j] == '!' || sql[j] == '{' || sql[j] == '}' || j == sql.length) {
+            post = j;
+            break;
+        }
+    }
+    return post;
+}
+
+function finalString(arr, firld_name) {
+    if (arr.length == 0) {
+        let tempResult = `${firld_name} like '%' `;
+        return tempResult;
+    }
+
+    let tempResult = `${firld_name} like '${arr[0]}%' `;
+
+    if (arr.length > 1) {
+        for (let i = 1; i < arr.length; i++) {
+            tempResult = tempResult + `or ${firld_name} like '${arr[i]}%'`
+        }
+    }
+    return tempResult;
+}
+
 
 module.exports = gridHandler;

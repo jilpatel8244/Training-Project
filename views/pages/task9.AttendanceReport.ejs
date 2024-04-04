@@ -25,34 +25,38 @@
                 </div>
             </div>
             <div class="row2">
-                <table>
-                    <tr>
-                        <th>id</th>
-                        <th>first name</th>
-                        <th>last name</th>
-                        <th>no of days present</th>
-                        <th>percentage</th>
-                    </tr>
-                    <% data.forEach(singleStudentData=> { %>
+                <% if(data.length){ %>
+                    <table>
                         <tr>
-                            <td>
-                                <%= singleStudentData.s_id %>
-                            </td>
-                            <td>
-                                <%= singleStudentData.first_name %>
-                            </td>
-                            <td>
-                                <%= singleStudentData.last_name %>
-                            </td>
-                            <td>
-                                <%= singleStudentData.count %>
-                            </td>
-                            <td>
-                                <%= (singleStudentData.percentage).toFixed(2) %> %
-                            </td>
+                            <th>id</th>
+                            <th>first name</th>
+                            <th>last name</th>
+                            <th>no of days present</th>
+                            <th>percentage</th>
                         </tr>
-                        <% }) %>
-                </table>
+                        <% data.forEach(singleStudentData=> { %>
+                            <tr>
+                                <td>
+                                    <%= singleStudentData.s_id %>
+                                </td>
+                                <td>
+                                    <%= singleStudentData.first_name %>
+                                </td>
+                                <td>
+                                    <%= singleStudentData.last_name %>
+                                </td>
+                                <td>
+                                    <%= singleStudentData.count %>
+                                </td>
+                                <td>
+                                    <%= (singleStudentData.percentage).toFixed(2) %> %
+                                </td>
+                            </tr>
+                            <% }) %>
+                    </table>
+                <% } else { %>
+                    <p style="text-align: center;">data not found</p>
+                <% } %>
             </div>
         </div>
     </section>

@@ -19,6 +19,16 @@ exports.getResult = async (req, res, next) => {
   try {
     CURRENT_PAGE = Number(req.query.page_no) || 1;
     let pageEnd = Math.ceil(count / NO_OF_RECORDS_PER_PAGE);
+
+    // used when someone manipulate page number from query directly
+		if (Number(req.query.page_no) > pageEnd) {
+			CURRENT_PAGE = pageEnd;
+		}
+		else if (Number(req.query.page_no) < 1) {
+			CURRENT_PAGE = 1;
+		}
+
+    
     let offset_value = (CURRENT_PAGE * NO_OF_RECORDS_PER_PAGE) - NO_OF_RECORDS_PER_PAGE;
 
     let sql = `select s.s_id, s.first_name, s.last_name, 

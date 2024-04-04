@@ -23,21 +23,21 @@
         <div class="container">
             <div class="row">
                 <% if(Number(current_page) != 1)  {%>
-                    <a href="/app/v1/getReport?page_no=1 %>&day=<%= day %>&month=<%= month %>&year=<%= year %>"><button> &#x3c;&#x3c; </button></a>
-                    <a href="/app/v1/getReport?page_no=<%= Number(current_page)-1 %>&day=<%= day %>&month=<%= month %>&year=<%= year %>"><button> &#x3c; </button></a>
+                    <a href="/app/v1/getReport?page_no=1 %>&day=<%= day %>&month=<%= month %>&year=<%= year %>"> &#x3c;&#x3c; </a>
+                    <a href="/app/v1/getReport?page_no=<%= Number(current_page)-1 %>&day=<%= day %>&month=<%= month %>&year=<%= year %>">&#x3c; </a>
                 <% }else{ %>
-                    <a aria-disabled="true" href="/app/v1/getReport?page_no=1 %>&day=<%= day %>&month=<%= month %>&year=<%= year %>"><button disabled> &#x3c;&#x3c; </button></a>
-                    <a aria-disabled="true" href="/app/v1/getReport?page_no=<%= Number(current_page)-1 %>&day=<%= day %>&month=<%= month %>&year=<%= year %>"> <button disabled> &#x3c; </button></a>
+                    <a onclick="return false;"> &#x3c;&#x3c; </a>
+                    <a onclick="return false;"> &#x3c; </a>
                 <% } %>
 
                 <span><%= current_page %></span>
 
                 <% if(Number(current_page) != Number(pageEnd))  {%>
-                    <a href="/app/v1/getReport?page_no=<%= Number(current_page)+1 %>&day=<%= day %>&month=<%= month %>&year=<%= year %>"><button> &#x3e; </button></a>
-                    <a href="/app/v1/getReport?page_no=<%= Number(pageEnd) %>&day=<%= day %>&month=<%= month %>&year=<%= year %>"><button> &#x3e;&#x3e; </button></a>
+                    <a href="/app/v1/getReport?page_no=<%= Number(current_page)+1 %>&day=<%= day %>&month=<%= month %>&year=<%= year %>">&#x3e;</a>
+                    <a href="/app/v1/getReport?page_no=<%= Number(pageEnd) %>&day=<%= day %>&month=<%= month %>&year=<%= year %>">&#x3e;&#x3e;</a>
                 <% }else{ %>
-                    <a aria-disabled="true" href="/app/v1/getReport?page_no=<%= Number(current_page)+1 %>&day=<%= day %>&month=<%= month %>&year=<%= year %>"><button disabled> &#x3e; </button></a>
-                    <a aria-disabled="true" href="/app/v1/getReport?page_no=<%= Number(pageEnd) %>&day=<%= day %>&month=<%= month %>&year=<%= year %>"> <button disabled> &#x3e;&#x3e; </button></a>
+                    <a onclick="return false;">&#x3e; </a>
+                    <a onclick="return false;">&#x3e;&#x3e; </a>
                 <% } %>
                 
             </div>

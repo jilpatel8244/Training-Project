@@ -21,7 +21,6 @@ fillCount();
 exports.getAllStudentsHandler = async (req, res, next) => {
     try {
         CURRENT_PAGE = Number(req.query.page_no) || 1;
-
         let pageEnd = Math.ceil(count / NO_OF_RECORDS_PER_PAGE);
 
         if (Number(req.query.page_no) > pageEnd) {
