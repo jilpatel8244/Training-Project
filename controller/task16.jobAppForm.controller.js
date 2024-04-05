@@ -15,7 +15,6 @@ exports.city_state_loader = (req, res, next) => {
             })
         }
         else {
-            console.log(req.query.state_id);
             connection.query("select * from cities where state_id = ?", [req.query.state_id], (error, result) => {
                 if (error) {
                     console.log(error);

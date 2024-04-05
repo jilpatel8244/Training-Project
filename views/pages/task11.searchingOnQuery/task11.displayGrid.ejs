@@ -40,24 +40,25 @@
             <%- include('./task11.queryForm.ejs') %>
         </section>
         <section>
-            <%- include('../../partials/task11.paginationComponent.ejs', {current_page: current_page, pageEnd: pageEnd}) %>
+            <%- include('../../partials/task11.paginationComponent.ejs', {current_page: current_page, pageEnd: pageEnd, orderBy_field: orderBy_field, orderBy_type: orderBy_type}) %>
         </section>
         <section>
             <div class="container">
                 <table style="margin: 0 auto;">
                     <tr>
-                         
+                        <% (orderBy_type == 'asc') ? orderBy_type = 'desc' : orderBy_type = 'asc' %>
                         <% fields.forEach(field=> { %>
-                            <% if(orderBy_field == field.name){ %>
-                                <% if(orderBy_type == 'asc'){ %>
-                                    <th><a href="/app/v1/getQueryResult?orderBy_field=<%=field.name%>&orderBy_type=<%= orderBy_type %>" > <%= (field.name).replaceAll("_"," ") %> &#9661; &#9650;</a></th>
+                                <% if(orderBy_field == field.name) {%>
+                                    <% if(orderBy_type == 'asc') { %>
+                                        <th><a href="/app/v1/getQueryResult?orderBy_field=<%=field.name%>&orderBy_type=<%=orderBy_type%>" > <%= (field.name).replaceAll("_"," ") %>&#9650; &#9661;</a></th>
+                                    <% } else { %>
+                                        <th><a href="/app/v1/getQueryResult?orderBy_field=<%=field.name%>&orderBy_type=<%=orderBy_type%>" > <%= (field.name).replaceAll("_"," ") %>&#9651; &#9660;</a></th>
+                                    <% } %>
                                 <% } else { %>
-                                    <th><a href="/app/v1/getQueryResult?orderBy_field=<%=field.name%>&orderBy_type=<%= orderBy_type %>" > <%= (field.name).replaceAll("_"," ") %> &#9660; &#9651;</a></th>
-                            <% } } else { %>
-                                <th><a href="/app/v1/getQueryResult?orderBy_field=<%=field.name%>&orderBy_type=<%= orderBy_type %>" > <%= (field.name).replaceAll("_"," ") %> &#9661; &#9651;</a></th>
-                        <% } }) %>
+                                    <th><a href="/app/v1/getQueryResult?orderBy_field=<%=field.name%>&orderBy_type=<%=orderBy_type%>" > <%= (field.name).replaceAll("_"," ") %>&#9651; &#9661;</a></th>
+                                <% } %>
+                        <% } ) %>
                     </tr>
-
                     <% data.forEach(singleData=> { %>
                         <tr>
                             <% fields.forEach(field=> { %>
